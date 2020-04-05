@@ -1,6 +1,6 @@
 <?php
 
-function create_header() {
+function create_header($style) {
     $iforgotwhatthiswascalled = "<!-- Compiled and minified CSS -->
     <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">
 
@@ -18,7 +18,7 @@ function create_header() {
     </div>
   </nav>";
 
-    echo $iforgotwhatthiswascalled . $navbar;
+    echo $iforgotwhatthiswascalled . $style . $navbar;
 }
 
 function create_footer() {
