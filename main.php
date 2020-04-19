@@ -1,7 +1,9 @@
 <?php
 
+include "db/setup.php";
+
 function create_header($style) {
-    $iforgotwhatthiswascalled = "<!-- Compiled and minified CSS -->
+    $header = "<!-- Compiled and minified CSS -->
     <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">
 
     <!-- Compiled and minified JavaScript -->
@@ -18,11 +20,12 @@ function create_header($style) {
     </div>
   </nav>";
 
-    echo $iforgotwhatthiswascalled . $style . $navbar;
+    echo $header . $style . $navbar;
 }
 
 function create_footer() {
-    $footer = "  <footer class=\"page-footer\">
+    $footer = "  
+          <footer class=\"page-footer\">
           <div class=\"container\">
             <div class=\"row\">
               <div class=\"col l6 s12\">
