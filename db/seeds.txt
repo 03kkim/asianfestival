@@ -1,0 +1,44 @@
+INSERT INTO timeslot (start_time, end_time)
+VALUES ("3:15", "3:50");
+
+INSERT INTO timeslot (start_time, end_time)
+VALUES ("3:50", "4:25");
+
+INSERT INTO timeslot (start_time, end_time)
+VALUES ("4:25", "5:00");
+
+INSERT INTO location (location_name)
+VALUES ("CC Section A");
+
+INSERT INTO location (location_name)
+VALUES ("CC Section B");
+
+INSERT INTO location (location_name)
+VALUES ("CC Section C");
+
+INSERT INTO location (location_name)
+VALUES ("Mezzanine");
+
+INSERT INTO location (location_name)
+VALUES ("Dance Studio");
+
+INSERT INTO country (country_name)
+VALUES ("Korea");
+
+INSERT INTO country (country_name)
+VALUES ("China");
+
+INSERT INTO country (country_name)
+VALUES ("Japan");
+
+INSERT INTO country (country_name)
+VALUES ("Philippines");
+
+INSERT INTO country (country_name)
+VALUES ("India");
+
+INSERT INTO performance (country_id, name)
+VALUES (1, "Test");
+
+INSERT INTO practice (location_id, performance_id, time_id, date)
+VALUES (1, 1, 1, CURDATE());
