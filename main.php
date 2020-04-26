@@ -1,6 +1,6 @@
 <?php
 
-include "db/setup.php";
+include "db/festival_db.php";
 
 function create_header($style) {
     $header = "<!-- Compiled and minified CSS -->
