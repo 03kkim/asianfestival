@@ -16,15 +16,18 @@
   #logo {
     margin-left: 1%;
   }
+  #daily_schedule {
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.25), -10px -10px 20px 0px rgba(0,0,0,0.25), -10px 10px 20px 0px rgba(0,0,0,0.25), 10px -10px 20px 0px rgba(0,0,0,0.25);
+  }
   </style>"); ?>
 
-<div class="practices carousel carousel-slider center">
+<div class="practices carousel carousel-slider center" id="daily_schedule">
     <div class="carousel-fixed-item center">
-        <a class="btn waves-effect white grey-text darken-text-2">View Practices</a>
+        <a class="btn waves-effect white black-text">View Practices</a>
     </div>
     <?php foreach($timeslots as $timeslot) {
      $practices = get_daily_practices_by_time_id($timeslot["time_id"]);   ?>
-    <div class="carousel-item blue lighten-4 black-text" href="#<?php echo $timeslot["timeslot_id"]?>">
+    <div class="carousel-item teal lighten-4 black-text" href="#<?php echo $timeslot["timeslot_id"]?>">
         <h2><?php echo $timeslot["time"]?></h2>
         <table class="centered">
             <thead>
