@@ -1,4 +1,5 @@
-<?php create_header("<style>  body {
+<?php create_header("<style>  
+  body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -11,6 +12,9 @@
     margin: 0 auto;
     margin-top: 5%;
     margin-bottom: 5%;
+  }
+  #logo {
+    margin-left: 1%;
   }
   </style>"); ?>
 

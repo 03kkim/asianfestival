@@ -10,9 +10,9 @@ function create_header($style) {
     <!-- Compiled and minified JavaScript -->
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>";
 
-    $navbar = "<nav>
+    $navbar = "<nav class=\"red darken-4\">
     <div class=\"nav-wrapper\">
-      <a href=\"#\" class=\"brand-logo\">Logo</a>
+      <a href=\"#\" class=\"brand-logo\" id=\"logo\">Asian Festival</a>
       <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
         <li><a href=\"sass.html\">Sass</a></li>
         <li><a href=\"badges.html\">Components</a></li>
@@ -26,8 +26,8 @@ function create_header($style) {
 
 function create_footer() {
     $footer = "  
-          <footer class=\"page-footer\">
-          <div class=\"container\">
+          <footer class=\"page-footer red darken-4\">
+            <div class=\"container\">
             <div class=\"row\">
               <div class=\"col l6 s12\">
                 <h5 class=\"white-text\">Footer Content</h5>
