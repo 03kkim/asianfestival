@@ -6,7 +6,7 @@ $db_name = "asianfestival";
 
 $username = "root";
 
-$password = "root";
+$password = "";
 
 $dsn = "mysql:host=" . $db_host . ";dbname=" . $db_name;
 

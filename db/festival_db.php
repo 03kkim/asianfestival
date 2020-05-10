@@ -67,3 +67,31 @@ function get_daily_practices_by_time_id($time_id) {
         exit();
     }
 }
+
+function get_practices_by_date($day, $month, $year) {
+    global $db;
+
+    $query = "select concat(start_time, ' - ', end_time) as time, location_name, performance.name from practice, location, performance, timeslot
+              where practice.location_id = location.location_id
+              and practice.performance_id = performance.performance_id
+              and practice.time_id = timeslot.time_id
+              and day(date) = :day
+              and month(date) = :month
+              and year(date) = :year
+              order by start_time";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":day", $day);
+        $statement->bindValue(":month", $month);
+        $statement->bindValue(":year", $year);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    }
+    catch (PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
