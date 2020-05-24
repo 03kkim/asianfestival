@@ -1,5 +1,6 @@
 <?php
 
+require __DIR__ . '/vendor/autoload.php';
 include "db/festival_db.php";
 
 function create_header($style) {

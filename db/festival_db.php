@@ -95,3 +95,19 @@ function get_practices_by_date($day, $month, $year) {
         exit();
     }
 }
+function get_performances() {
+    global $db;
+
+    $query = "select * from performance";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
