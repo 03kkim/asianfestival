@@ -42,7 +42,7 @@ function draw_calendar($month,$year){
         }
 
         foreach($practices as $practice) {
-            $calendar .= '<div style="text-align:center; height:20px;width:50%" class="card-panel teal">';
+            $calendar .= '<div style="text-align:center; height:auto;width:50%" class="card-panel teal">';
             $calendar .= "<span style='text-align:center;' class='white-text'>" . $practice["name"] . "</span>";
             $calendar .= "</div>";
         }
