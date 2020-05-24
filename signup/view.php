@@ -32,15 +32,6 @@
     padding: 5% 0;
   }
   </style>"); ?>
-
-    <div id = "home_logo" class="row">
-        <div class="col s12 m12">
-            <div class="card-panel red darken-4 z-depth-5">
-        <span class="white-text center-align"><h1>Asian Festival</h1>
-        </span>
-            </div>
-        </div>
-    </div>
 <h1>Sign Up Page</h1>
 
 <form>
