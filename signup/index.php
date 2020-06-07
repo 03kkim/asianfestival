@@ -12,4 +12,7 @@ switch($action) {
     case "show_form":
         $performances = get_performances();
         include 'view.php';
+
+    case "add_user":
+        $email = $_POST["email"];
 }

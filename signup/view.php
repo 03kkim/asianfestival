@@ -34,7 +34,7 @@
   </style>"); ?>
 <h1>Sign Up</h1>
 
-<form style="width:70%;margin: 0 auto" type="submit" >
+<form style="width:70%;margin: 0 auto" method="post" action="./index.php">
     <input type="hidden" name="action" id="add_user">
     <div class="row">
         <div class="col s12">
@@ -92,9 +92,12 @@
                 <?php } ?>
             </select>
         </div>
-        </div>
     </div>
-
+    <button style="margin-bottom: 8%;margin-right:8%" class="btn waves-effect waves-light" value="Submit" type="submit" name="submit">
+        Submit
+        <i class="material-icons right">send</i>
+    </button>
+    <button style="margin-bottom: 8%" class="btn waves-effect waves-light" value="Cancel" type="submit" name="submit">Cancel</button>
 </form>
 
 <script>
