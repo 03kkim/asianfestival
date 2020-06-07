@@ -68,6 +68,7 @@
         <div class="col s4">
             <label for="performance1">Performance 1</label>
             <select id="performance1" name="performance1">
+                <option selected disabled value=""></option>
                 <?php foreach($performances as $performance) { ?>
                 <option class="<?php echo $performance['name']?>" value="<?php echo $performance['performance_id']?>"> <?php echo $performance["name"]?> </option>
                 <?php } ?>
@@ -76,14 +77,16 @@
         <div class="col s4">
             <label for="performance2">Performance 2</label>
             <select id="performance2" name="performance2">
+                <option selected disabled value=""></option>
                 <?php foreach($performances as $performance) { ?>
                     <option class="<?php echo $performance['name']?>" value="<?php echo $performance['performance_id']?>"> <?php echo $performance["name"]?> </option>
                 <?php } ?>
             </select>
         </div>
         <div class="col s4">
-            <label for="performance3">Performance 3</label>
+            <label id="hide-me" for="performance3">Performance 3</label>
             <select id="performance3" name="performance3">
+                <option selected disabled></option>
                 <?php foreach($performances as $performance) { ?>
                     <option class="<?php echo $performance['name']?>" value="<?php echo $performance['performance_id']?>"> <?php echo $performance["name"]?> </option>
                 <?php } ?>
@@ -100,13 +103,14 @@
     });
 
     $("#grade").change(function () {
-        let elem = parseInt($("#grade").value);
+        let elem = parseInt($("#grade").val());
         if (elem < 11) {
-            $('#performance3').style.display = "none";
-            $('#performance3').material_select();
+            $('#performance3').formSelect('destroy');
+            document.getElementById("hide-me").style.display = "none";
         }
         else {
-            $('#performance3').style.display = "block";
+            $('#performance3').formSelect();
+            document.getElementById("hide-me").style.display = "block";
         }
     });
 </script>

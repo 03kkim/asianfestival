@@ -15,8 +15,8 @@ function create_header($style) {
     <div class=\"nav-wrapper\">
       <a href=\"../index.php\" class=\"brand-logo\" id=\"logo\">Asian Festival</a>
       <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
-        <li><a href=\"../calendar/index.php\">Calendar</a></li>
-        <li><a href=\"../signup/index.php\">Sign Up</a></li>
+        <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>
+        <li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>
       </ul>
     </div>
   </nav>";
