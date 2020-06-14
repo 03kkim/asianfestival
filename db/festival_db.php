@@ -146,5 +146,30 @@ function add_user($email, $password, $first_name, $last_name, $grade, $performan
         echo $e;
         exit();
     }
+}
+
+function get_performances_by_user_id($user_id) {
+    global $db;
+
+    $query = "select * from performance, performance_user_xref, country
+              where user_id = :user_id 
+              and performance.performance_id = performance_user_xref.performance_id
+              and performance.country_id = country.country_id";
+
+    try {
+        $statement = $db->prepare();
+        $statement->bindValue(":user_id", $user_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
+
+function get_practices_by_performance_id($performance_id) {
 
 }
