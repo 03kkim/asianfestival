@@ -111,3 +111,28 @@ function get_performances() {
         exit();
     }
 }
+
+function add_user($email, $password, $first_name, $last_name, $grade) {
+    global $db;
+    global $auth;
+
+    $user_id = $auth->register($email, $password, $first_name . " " . $last_name);
+
+    $query = "insert into users (email, password, username) values (:email, \"password\", :username); insert into user_info (grade, is_paid) values (:grade, 0)";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":email", $email);
+        $statement->bindValue(":username", $first_name . $last_name);
+        $statement->bindValue(":grade", $grade);
+
+        $statement->execute();
+        $statement->closeCursor();
+
+    }
+
+    catch (PDOException $e) {
+        echo $e;
+        exit();
+    }
+}

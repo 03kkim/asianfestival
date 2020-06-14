@@ -53,6 +53,12 @@
         </div>
     </div>
     <div class="row">
+        <div class="col s12">
+            <label for="password"> Password </label>
+            <input type="password" id="password" name="password">
+        </div>
+    </div>
+    <div class="row">
         <div class="col s6">
             <label for="grade">Grade</label>
             <select id="grade" name="grade">
