@@ -112,27 +112,39 @@ function get_performances() {
     }
 }
 
-function add_user($email, $password, $first_name, $last_name, $grade) {
+function add_user($email, $password, $first_name, $last_name, $grade, $performances) {
     global $db;
     global $auth;
 
     $user_id = $auth->register($email, $password, $first_name . " " . $last_name);
 
-    $query = "insert into users (email, password, username) values (:email, \"password\", :username); insert into user_info (grade, is_paid) values (:grade, 0)";
+    $query = "insert into performance_user_xref (performance_id, user_id) values ";
+    foreach($performances as $performance) {
+        $query .= " (" . $performance . ", " . $user_id . ") ";
+    }
 
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(":email", $email);
-        $statement->bindValue(":username", $first_name . $last_name);
-        $statement->bindValue(":grade", $grade);
-
         $statement->execute();
         $statement->closeCursor();
-
     }
 
     catch (PDOException $e) {
         echo $e;
         exit();
     }
+
+    $query = "insert into user_info (user_id, grade) values (" . $user_id . ", " . $grade . ")";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
+    catch (PDOException $e) {
+        echo $e;
+        exit();
+    }
+
 }
