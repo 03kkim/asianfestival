@@ -20,13 +20,13 @@ function create_header($style) {
         <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>
         <li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>";
         if ($auth->isLoggedIn()) {
-            echo "<li><a href=\"/signin/index.php\">Sign In</a></li>
+            $navbar .= "<li><a href=\"/asianfestival/signin/signout.php\">Sign Out</a></li>
         </ul>
     </div>
   </nav>";
         }
         else {
-            echo "<li><a href=\"/signin/signout.php\">Sign Out</a></li>
+            $navbar .= "<li><a href=\"/asianfestival/signin/index.php\">Sign In</a></li>
       </ul>
     </div>
   </nav>";
