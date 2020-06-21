@@ -4,6 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 include "db/festival_db.php";
 
 function create_header($style) {
+    global $auth;
     $header = "<!-- Compiled and minified CSS -->
     <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>
     <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">
@@ -17,10 +18,20 @@ function create_header($style) {
       <a href=\"../index.php\" class=\"brand-logo\" id=\"logo\">Asian Festival</a>
       <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
         <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>
-        <li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>
+        <li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>";
+        if ($auth->isLoggedIn()) {
+            echo "<li><a href=\"/signin/index.php\">Sign In</a></li>
+        </ul>
+    </div>
+  </nav>";
+        }
+        else {
+            echo "<li><a href=\"/signin/signout.php\">Sign Out</a></li>
       </ul>
     </div>
   </nav>";
+        }
+
 
     echo $header . $style . $navbar;
 }
