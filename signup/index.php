@@ -41,6 +41,8 @@ switch($action) {
             $performances = array_unique($performances);
 
             add_user($email, $password, $first_name, $last_name, $grade, $performances);
+            $auth->login($email, $password);
         }
+        header("Location: ../performance/index.php");
         break;
 }

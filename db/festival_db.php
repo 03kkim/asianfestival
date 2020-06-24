@@ -171,7 +171,7 @@ function get_performances_by_user_id($user_id) {
               and performance.country_id = country.country_id";
 
     try {
-        $statement = $db->prepare();
+        $statement = $db->prepare($query);
         $statement->bindValue(":user_id", $user_id);
         $statement->execute();
         $result = $statement->fetchAll();
