@@ -38,6 +38,8 @@ switch($action) {
                 $performances = array($performance1, $performance2, $performance3);
             }
 
+            $performances = array_unique($performances);
+
             add_user($email, $password, $first_name, $last_name, $grade, $performances);
         }
         break;
