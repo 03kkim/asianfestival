@@ -1,7 +1,7 @@
 <?php
 
 include "../main.php";
-include "./db/festival_db.php";
+include "../db/festival_db.php";
 include "view.php";
 
 try {

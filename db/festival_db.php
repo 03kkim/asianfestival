@@ -112,6 +112,18 @@ function get_performances() {
     }
 }
 
+function str_lreplace($search, $replace, $subject)
+{
+    $pos = strrpos($subject, $search);
+
+    if($pos !== false)
+    {
+        $subject = substr_replace($subject, $replace, $pos, strlen($search));
+    }
+
+    return $subject;
+}
+
 function add_user($email, $password, $first_name, $last_name, $grade, $performances) {
     global $db;
     global $auth;
@@ -120,8 +132,10 @@ function add_user($email, $password, $first_name, $last_name, $grade, $performan
 
     $query = "insert into performance_user_xref (performance_id, user_id) values ";
     foreach($performances as $performance) {
-        $query .= " (" . $performance . ", " . $user_id . ") ";
+        $query .= " (" . $performance . ", " . $user_id . "), ";
     }
+
+    $query = str_lreplace(",", "", $query);
 
     try {
         $statement = $db->prepare($query);
