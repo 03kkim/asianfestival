@@ -3,7 +3,7 @@
 include '../main.php';
 
 if(!$auth->check()) {
-
+    header("Location: ../index.php");
 }
 
 if(!isset($_GET["action"])){
