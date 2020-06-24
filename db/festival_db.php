@@ -137,9 +137,6 @@ function add_user($email, $password, $first_name, $last_name, $grade, $performan
 
     $query = str_lreplace(",", "", $query);
 
-    echo $query;
-    exit();
-
     try {
         $statement = $db->prepare($query);
         $statement->execute();
