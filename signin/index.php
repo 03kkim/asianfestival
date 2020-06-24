@@ -2,25 +2,36 @@
 
 include "../main.php";
 include "../db/festival_db.php";
-include "view.php";
 
-try {
-    $auth->login($_POST['email'], $_POST['password']);
-
-    echo 'User is logged in';
-}
-catch (\Delight\Auth\InvalidEmailException $e) {
-    die('Wrong email address');
-}
-catch (\Delight\Auth\InvalidPasswordException $e) {
-    die('Wrong password');
-}
-catch (\Delight\Auth\EmailNotVerifiedException $e) {
-    die('Email not verified');
-}
-catch (\Delight\Auth\TooManyRequestsException $e) {
-    die('Too many requests');
+if(!isset($_GET["action"])){
+    if(!isset($_POST["action"])){
+        $action = "show_form";
+    }
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $action = "sign_in";
+}
+switch($action) {
+    case "show_form":
+        include "view.php";
+        break;
+    case "sign_in":
+        try {
+            $auth->login($_POST['email'], $_POST['password']);
 
+            echo 'User is logged in';
+        } catch (\Delight\Auth\InvalidEmailException $e) {
+            die('Wrong email address');
+        } catch (\Delight\Auth\InvalidPasswordException $e) {
+            die('Wrong password');
+        } catch (\Delight\Auth\EmailNotVerifiedException $e) {
+            die('Email not verified');
+        } catch (\Delight\Auth\TooManyRequestsException $e) {
+            die('Too many requests');
+        }
+
+        header("Location: ../index.php");
+        break;
+}
 
