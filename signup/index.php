@@ -27,9 +27,9 @@ switch($action) {
             $last_name = filter_input(INPUT_POST, "last_name");
             $grade = filter_input(INPUT_POST, "grade");
             $password = filter_input(INPUT_POST, "password");
-            $performance1 = array(filter_input(INPUT_POST, "performance1"));
-            $performance2 = array(filter_input(INPUT_POST, "performance2"));
-            $performance3 = array(filter_input(INPUT_POST, "performance3"));
+            $performance1 = filter_input(INPUT_POST, "performance1");
+            $performance2 = filter_input(INPUT_POST, "performance2");
+            $performance3 = filter_input(INPUT_POST, "performance3");
 
             if($grade < 11) {
                 $performances = array($performance1, $performance2);

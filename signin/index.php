@@ -1,7 +1,6 @@
 <?php
 
 include "../main.php";
-include "../db/festival_db.php";
 
 if(!isset($_GET["action"])){
     if(!isset($_POST["action"])){
@@ -16,6 +15,7 @@ switch($action) {
     case "show_form":
         include "view.php";
         break;
+
     case "sign_in":
         try {
             $auth->login($_POST['email'], $_POST['password']);
