@@ -1,6 +1,6 @@
 <?php
 create_header("");
-
-echo draw_calendar("5", "2020");
+$month = date("n");
+echo draw_calendar($month, "2020");
 
 create_footer(); ?>

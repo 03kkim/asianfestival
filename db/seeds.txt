@@ -23,22 +23,101 @@ INSERT INTO location (location_name)
 VALUES ("Dance Studio");
 
 INSERT INTO country (country_name)
-VALUES ("Korea");
+VALUES ("China");
 
 INSERT INTO country (country_name)
-VALUES ("China");
+VALUES ("India");
 
 INSERT INTO country (country_name)
 VALUES ("Japan");
 
 INSERT INTO country (country_name)
-VALUES ("Philippines");
+VALUES ("Korea");
 
 INSERT INTO country (country_name)
-VALUES ("India");
+VALUES ("Philippines");
 
+//// DON'T DO THESE (*JUST FOR REFERENCE*)////
 INSERT INTO performance (country_id, name)
 VALUES (1, "Test");
 
 INSERT INTO practice (location_id, performance_id, time_id, date)
 VALUES (1, 1, 1, CURDATE());
+//////////////////////////////////////////////
+
+Performances:
+
+China (1):
+Chinese Traditional
+Chinese Yo-Yo
+Lion Dance
+
+India (2):
+Indian Modern
+Indian Traditional
+
+Japan (3):
+Fisherman Dance
+Wadaiko
+
+Korea (4):
+Fan Dance
+Korean Modern
+Korean Skit
+Korean Skit Background
+Kumdo
+Samulnori
+Taekwondo
+
+Philippines (5):
+Pandanggo Sa Ilaw
+Tinikling
+
+
+INSERT INTO performance (country_id, name)
+VALUES (1, "Chinese Traditional");
+
+INSERT INTO performance (country_id, name)
+VALUES (1, "Chinese Yo-Yo");
+
+INSERT INTO performance (country_id, name)
+VALUES (1, "Lion Dance");
+
+INSERT INTO performance (country_id, name)
+VALUES (2, "Indian Modern");
+
+INSERT INTO performance (country_id, name)
+VALUES (2, "Indian Traditional");
+
+INSERT INTO performance (country_id, name)
+VALUES (3, "Fisherman Dance");
+
+INSERT INTO performance (country_id, name)
+VALUES (3, "Wadaiko");
+
+INSERT INTO performance (country_id, name)
+VALUES (4, "Fan Dance");
+
+INSERT INTO performance (country_id, name)
+VALUES (4, "Korean Modern");
+
+INSERT INTO performance (country_id, name)
+VALUES (4, "Korean Skit");
+
+INSERT INTO performance (country_id, name)
+VALUES (4, "Korean Skit Background");
+
+INSERT INTO performance (country_id, name)
+VALUES (4, "Kumdo");
+
+INSERT INTO performance (country_id, name)
+VALUES (4, "Samulnori");
+
+INSERT INTO performance (country_id, name)
+VALUES (4, "Taekwondo");
+
+INSERT INTO performance (country_id, name)
+VALUES (5, "Pandanggo Sa Ilaw");
+
+INSERT INTO performance (country_id, name)
+VALUES (5, "Tinikling");
