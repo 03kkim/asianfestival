@@ -185,5 +185,26 @@ function get_performances_by_user_id($user_id) {
 }
 
 function get_practices_by_performance_id($performance_id) {
+    global $db;
 
+    $query = "select location_name, date_format(date, '%M %D, %Y') as formatted_date, concat(time_format(start_time, '%h:%i %p'), ' - ', time_format(end_time, '%h:%i %p')) as time from practice, location, timeslot 
+              where performance_id = :performance_id
+              and practice.location_id = location.location_id
+              and practice.time_id = timeslot.time_id
+              and date >= CURDATE()
+              order by date
+              limit 3";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":performance_id", $performance_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
 }
