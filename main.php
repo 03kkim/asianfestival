@@ -17,16 +17,17 @@ function create_header($style) {
     <div class=\"nav-wrapper\">
       <a href=\"/asianfestival/index.php\" class=\"brand-logo\" id=\"logo\">Asian Festival</a>
       <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
-        <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>
-        <li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>";
+        <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>";
         if ($auth->isLoggedIn()) {
-            $navbar .= "<li><a href=\"/asianfestival/logout/index.php\">Sign Out</a></li>
+            $navbar .= "<li><a href=\"/asianfestival/practices/index.php\">Dashboard</a></li>
+            <li><a href=\"/asianfestival/logout/index.php\">Sign Out</a></li>  
         </ul>
     </div>
   </nav>";
         }
         else {
-            $navbar .= "<li><a href=\"/asianfestival/signin/index.php\">Sign In</a></li>
+            $navbar .= "<li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>
+        <li><a href=\"/asianfestival/signin/index.php\">Sign In</a></li>
       </ul>
     </div>
   </nav>";

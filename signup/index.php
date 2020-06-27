@@ -43,6 +43,6 @@ switch($action) {
             add_user($email, $password, $first_name, $last_name, $grade, $performances);
             $auth->login($email, $password);
         }
-        header("Location: ../performance/index.php");
+        header("Location: ../practices/index.php");
         break;
 }

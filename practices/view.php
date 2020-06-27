@@ -1,8 +1,8 @@
 <?php
-create_header();
+create_header("");
 ?>
-
-<ul class="collapsible">
+<h1>Practices</h1>
+<ul class="collapsible expandable">
     <?php foreach($user_performances as $performance) { ?>
         <li>
             <div class="collapsible-header"><i class="material-icons">person</i><?php echo $performance["name"]?></div>
@@ -32,7 +32,13 @@ create_header();
 </ul>
 
 <script>
-    $(document).ready(function(){
-        $('.collapsible').collapsible();
+    // $(document).ready(function(){
+    //     $('.collapsible').collapsible();
+    // });
+
+    //Changed so you can expand multiple practice schedules at once
+    var elem = document.querySelector('.collapsible.expandable');
+    var instance = M.Collapsible.init(elem, {
+        accordion: false
     });
 </script>
