@@ -208,3 +208,67 @@ function get_practices_by_performance_id($performance_id) {
         exit();
     }
 }
+
+function change_admin_status($user_id, $performance_id, $status) {
+    global $db;
+
+    $query = "update performance_user_xref 
+              set is_performance_leader = :status 
+              where user_id = :user_id 
+              and performance_id = :performance_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":user_id", $user_id);
+        $statement->bindValue(":performance_id", $performance_id);
+        $statement->bindValue(":status", $status);
+        $statement->execute();
+        $statement->closeCursor();
+
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
+
+function get_user_info($user_id) {
+    global $db;
+
+    $query = "select * from user_info where user_id = :user_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":user_id", $user_id);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $statement->closeCursor();
+
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
+
+function check_performance_leader($user_id, $performance_id) {
+    global $db;
+
+    $query = "select * from performance_user_xref where user_id = :user_id and performance_id = :performance_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":user_id", $user_id);
+        $statement->bindValue(":performance_id", $performance_id);
+
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $statement->closeCursor();
+
+        return $result["is_performance_leader"];
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}

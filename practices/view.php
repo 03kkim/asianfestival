@@ -3,11 +3,22 @@ create_header("");
 ?>
 <h1>Practices</h1>
 <ul class="collapsible expandable">
-    <?php foreach($user_performances as $performance) { ?>
+    <?php foreach($user_performances as $performance) {
+        $status = check_performance_leader($user_id, $performance["performance_id"]) ?>
         <li>
             <div class="collapsible-header"><i class="material-icons">person</i><?php echo $performance["name"]?></div>
             <div class="collapsible-body">
                 <span>Country: <?php echo $performance["country_name"] ?></span>
+                <p>
+                    <label>
+                        <input
+                                <?php if ($status == "Y") echo " disabled "?>
+                                <?php if ($status == "P") echo " checked " ?>
+                                onchange="request_admin_status('<?php echo $performance["performance_id"]?>', $(this).is(':checked'))"
+                                type="checkbox">
+                        <span> Request Admin Status? </span>
+                    </label>
+                </p>
                 <table class="centered">
                     <thead>
                         <tr>
@@ -47,4 +58,15 @@ create_header("");
     var instance = M.Collapsible.init(elem, {
         accordion: false
     });
+
+    function request_admin_status(performance_id, checked) {
+        let user_id = "<?php echo $user_id ?>";
+        console.log(checked);
+        let url = "../practices/index.php?user_id=" + user_id + "&checked=" + checked + "&action=request_admin&performance_id=" + performance_id;
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url);
+
+        xhttp.send();
+    }
 </script>
