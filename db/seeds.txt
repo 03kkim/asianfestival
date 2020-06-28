@@ -37,41 +37,41 @@ VALUES ("Korea");
 INSERT INTO country (country_name)
 VALUES ("Philippines");
 
-//// DON'T DO THESE (*JUST FOR REFERENCE*)////
-INSERT INTO performance (country_id, name)
-VALUES (1, "Test");
+-- //// DON'T DO THESE (*JUST FOR REFERENCE*)////
+-- INSERT INTO performance (country_id, name)
+-- VALUES (1, "Test");
 
-INSERT INTO practice (location_id, performance_id, time_id, date)
-VALUES (1, 1, 1, CURDATE());
-//////////////////////////////////////////////
+-- INSERT INTO practice (location_id, performance_id, time_id, date)
+-- VALUES (1, 1, 1, CURDATE());
+-- //////////////////////////////////////////////
 
-Performances:
+-- Performances:
 
-China (1):
-Chinese Traditional
-Chinese Yo-Yo
-Lion Dance
+-- China (1):
+-- Chinese Traditional
+-- Chinese Yo-Yo
+-- Lion Dance
 
-India (2):
-Indian Modern
-Indian Traditional
+-- India (2):
+-- Indian Modern
+-- Indian Traditional
 
-Japan (3):
-Fisherman Dance
-Wadaiko
+-- Japan (3):
+-- Fisherman Dance
+-- Wadaiko
 
-Korea (4):
-Fan Dance
-Korean Modern
-Korean Skit
-Korean Skit Background
-Kumdo
-Samulnori
-Taekwondo
+-- Korea (4):
+-- Fan Dance
+-- Korean Modern
+-- Korean Skit
+-- Korean Skit Background
+-- Kumdo
+-- Samulnori
+-- Taekwondo
 
-Philippines (5):
-Pandanggo Sa Ilaw
-Tinikling
+-- Philippines (5):
+-- Pandanggo Sa Ilaw
+-- Tinikling
 
 
 INSERT INTO performance (country_id, name)
