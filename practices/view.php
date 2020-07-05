@@ -13,10 +13,10 @@ create_header("");
                     <label>
                         <input
                                 <?php if ($status == "Y") echo " disabled "?>
-                                <?php if ($status == "P") echo " checked " ?>
+                                <?php if ($status != "N") echo " checked " ?>
                                 onchange="request_admin_status('<?php echo $performance["performance_id"]?>', $(this).is(':checked'))"
                                 type="checkbox">
-                        <span> Request Admin Status? </span>
+                        <span> <?php if ($status == "Y") echo "You are admin!"; else echo "Request Admin Status?";?> </span>
                     </label>
                 </p>
                 <table class="centered">
@@ -61,7 +61,6 @@ create_header("");
 
     function request_admin_status(performance_id, checked) {
         let user_id = "<?php echo $user_id ?>";
-        console.log(checked);
         let url = "../practices/index.php?user_id=" + user_id + "&checked=" + checked + "&action=request_admin&performance_id=" + performance_id;
 
         var xhttp = new XMLHttpRequest();

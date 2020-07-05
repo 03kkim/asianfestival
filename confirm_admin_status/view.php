@@ -1,7 +1,7 @@
 <?php
 create_header("");
 ?>
-<table>
+<table class="centered" style="width:70%;">
     <thead>
         <tr>
             <th>
@@ -23,9 +23,28 @@ create_header("");
             <tr>
                 <td><?php echo $request["username"]?></td>
                 <td><?php echo $request["email"]?></td>
-                <td><?php echo $request["performance_name"]?></td>
-                <td></td>
+                <td><?php echo $request["name"]?></td>
+                <td>
+                    <p>
+                        <label>
+                            <input type="checkbox" onchange="confirm_admin_status('<?php echo $request["id"] ?>', '<?php echo $request["performance_id"]?>', $(this).is(':checked'))" >
+                            <span></span>
+                        </label>
+                    </p>
+                </td>
             </tr>
         <?php } ?>
     </tbody>
 </table>
+
+<script>
+    function confirm_admin_status(user_id, performance_id, checked) {
+        let url = "../confirm_admin_status/index.php?action=confirm_status&user_id=" + user_id + "&performance_id=" + performance_id + "&checked=" + checked;
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url);
+
+        xhttp.send();
+    }
+
+</script>

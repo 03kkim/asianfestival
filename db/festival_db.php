@@ -282,7 +282,7 @@ function get_pending_admin_requests() {
 
     try{
         $statement = $db->prepare($query);
-        $statement->exectue();
+        $statement->execute();
         $result = $statement->fetchAll();
         $statement->closeCursor();
 
