@@ -272,3 +272,23 @@ function check_performance_leader($user_id, $performance_id) {
         exit();
     }
 }
+
+function get_pending_admin_requests() {
+    global $db;
+
+    $query = "select * from performance_user_xref, users, performance
+              where performance_user_xref.user_id = users.id and performance_user_xref.performance_id = performance.performance_id
+              and is_performance_leader = 'P'";
+
+    try{
+        $statement = $db->prepare($query);
+        $statement->exectue();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
