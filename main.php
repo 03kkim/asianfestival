@@ -51,6 +51,8 @@ function create_header($style) {
         <li><a href=\"/asianfestival/signin/index.php\">Sign In</a></li></ul>";
     }
 
+    $navbar .= "<body><main>";
+
 
     echo $header . $style . $navbar;
 }
@@ -81,7 +83,7 @@ function create_footer() {
             <a class=\"grey-text text-lighten-4 right\" href=\"#!\">More Links</a>
             </div>
           </div>
-        </footer>";
+        </footer></main></body>";
 
     $footer .= "<script>
                   $(document).ready(function(){
