@@ -1,6 +1,6 @@
 <?php
 include "../main.php";
-if(!$auth->check()) {
+if(!$auth->check() || !$auth->hasRole(\Delight\Auth\Role::ADMIN)) {
     header("Location: /asianfestival/index.php");
 }
 $action = filter_input(INPUT_GET, "action");
@@ -30,7 +30,6 @@ switch($action) {
         else {
             $auth->admin()->removeRoleForUserById($user_id, \Delight\Auth\Role::ADMIN);
         }
-
         change_admin_status($user_id, $performance_id, $status);
         break;
 }

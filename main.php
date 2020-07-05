@@ -16,15 +16,15 @@ function create_header($style) {
     $navbar = "<nav class=\"red darken-4\">
     <div class=\"nav-wrapper\">
       <a href=\"/asianfestival/index.php\" class=\"brand-logo\" id=\"logo\">Asian Festival</a>
+      <a href=\"#\" data-target=\"mobile-demo\" class=\"sidenav-trigger\"><i class=\"material-icons\">menu</i></a>
       <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
         <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>";
         if ($auth->isLoggedIn()) {
-            $navbar .= "<li><a href=\"/asianfestival/practices/index.php\">Dashboard</a></li>
-            <li><a href=\"/asianfestival/logout/index.php\">Log Out</a></li>";
+            $navbar .= "<li><a href=\"/asianfestival/practices/index.php\">Dashboard</a></li>";
             if($auth->hasRole(\Delight\Auth\Role::ADMIN)) {
                 $navbar .= "<li><a href=\"/asianfestival/confirm_admin_status\">Confirm Admins</a></li>";
             }
-            $navbar.= "</ul>
+            $navbar.= "<li><a href=\"/asianfestival/logout/index.php\">Log Out</a></li></ul>
     </div>
   </nav>";
         }
@@ -36,6 +36,20 @@ function create_header($style) {
     </div>
   </nav>";
         }
+
+        $navbar .= "<ul class=\"sidenav\" id=\"mobile-demo\">
+                    <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>";
+    if ($auth->isLoggedIn()) {
+        $navbar .= "<li><a href=\"/asianfestival/practices/index.php\">Dashboard</a></li>";
+        if($auth->hasRole(\Delight\Auth\Role::ADMIN)) {
+            $navbar .= "<li><a href=\"/asianfestival/confirm_admin_status\">Confirm Admins</a></li>";
+        }
+        $navbar.= "<li><a href=\"/asianfestival/logout/index.php\">Log Out</a></li></ul>";
+    }
+    else {
+        $navbar .= "<li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>
+        <li><a href=\"/asianfestival/signin/index.php\">Sign In</a></li></ul>";
+    }
 
 
     echo $header . $style . $navbar;
@@ -68,6 +82,12 @@ function create_footer() {
             </div>
           </div>
         </footer>";
+
+    $footer .= "<script>
+                  $(document).ready(function(){
+                    $('.sidenav').sidenav();
+                  });
+                </script>";
 
     echo $footer;
 }

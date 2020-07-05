@@ -1,7 +1,8 @@
 <?php
 create_header("");
 ?>
-<table class="centered" style="width:70%;">
+<div class="center-align container">
+<table class="centered striped" style="">
     <thead>
         <tr>
             <th>
@@ -36,6 +37,7 @@ create_header("");
         <?php } ?>
     </tbody>
 </table>
+</div>
 
 <script>
     function confirm_admin_status(user_id, performance_id, checked) {
