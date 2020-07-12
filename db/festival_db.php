@@ -293,3 +293,20 @@ function get_pending_admin_requests() {
     }
 }
 
+function get_locations() {
+    global $db;
+
+    $query = "select * from location";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}

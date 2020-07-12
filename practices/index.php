@@ -36,8 +36,10 @@ switch($action) {
 
     case "create_practice":
         if(!$auth->hasRole(\Delight\Auth\Role::ADMIN)) {
-            header("Location: ../index.php");
+            header("Location: /asianfestival/index.php");
         }
         $performance_id = filter_input(INPUT_GET, "performance_id");
+        $locations = get_locations();
+        $timeslots = get_timeslots();
         include "create_practice.php";
 }
