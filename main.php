@@ -6,12 +6,24 @@ include "db/festival_db.php";
 function create_header($style) {
     global $auth;
     $header = "<!-- Compiled and minified CSS -->
+    <header>
     <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>
     <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">
 
     <!-- Compiled and minified JavaScript -->
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>
-    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">";
+    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">
+    <style>
+    body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+    </style>";
 
     $navbar = "<nav class=\"red darken-4\">
     <div class=\"nav-wrapper\">
@@ -51,14 +63,14 @@ function create_header($style) {
         <li><a href=\"/asianfestival/signin/index.php\">Sign In</a></li></ul>";
     }
 
-    $navbar .= "<body><main>";
-
+    $navbar .= "</header><body><main>";
 
     echo $header . $style . $navbar;
 }
 
 function create_footer() {
-    $footer = "  
+    $footer = "
+          </main></body>  
           <footer class=\"page-footer red darken-4\">
             <div class=\"container\">
             <div class=\"row\">
@@ -83,7 +95,7 @@ function create_footer() {
             <a class=\"grey-text text-lighten-4 right\" href=\"#!\">More Links</a>
             </div>
           </div>
-        </footer></main></body>";
+        </footer>";
 
     $footer .= "<script>
                   $(document).ready(function(){

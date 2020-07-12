@@ -33,4 +33,11 @@ switch($action) {
 
         change_admin_status($user_id, $performance_id, $status);
         break;
+
+    case "create_practice":
+        if(!$auth->hasRole(\Delight\Auth\Role::ADMIN)) {
+            header("Location: ../index.php");
+        }
+        $performance_id = filter_input(INPUT_GET, "performance_id");
+        include "create_practice.php";
 }

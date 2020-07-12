@@ -19,6 +19,9 @@ create_header("");
                         <span> <?php if ($status == "Y") echo "You are admin!"; else echo "Request Admin Status?";?> </span>
                     </label>
                 </p>
+                <?php if($status == "Y") { ?>
+                <a href="../practices/index.php?action=create_practice&performance_id=<?php echo $performance['performance_id']?>" class="waves-effect waves-light btn">Create a Practice</a>
+                <?php } ?>
                 <table class="centered">
                     <thead>
                         <tr>

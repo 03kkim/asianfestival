@@ -5,7 +5,7 @@ include "setup.php";
 function get_daily_practices() {
     global $db;
 
-    $query = "select concat(start_time, ' - ', end_time) as time, location_name, performance.name from practice, location, performance, timeslot
+    $query = "select concat(time_format(start_time, '%h:%i %p'), ' - ', time_format(end_time, '%h:%i %p')) as time, location_name, performance.name from practice, location, performance, timeslot
               where practice.location_id = location.location_id
               and practice.performance_id = performance.performance_id
               and practice.time_id = timeslot.time_id
@@ -28,7 +28,7 @@ function get_daily_practices() {
 function get_timeslots() {
     global $db;
 
-    $query = "select concat(start_time, ' - ', end_time) as time, start_time, end_time, time_id 
+    $query = "select concat(time_format(start_time, '%h:%i %p'), ' - ', time_format(end_time, '%h:%i %p')) as time, start_time, end_time, time_id 
               from timeslot order by start_time";
 
     try {
@@ -46,7 +46,7 @@ function get_timeslots() {
 function get_daily_practices_by_time_id($time_id) {
     global $db;
 
-    $query = "select concat(start_time, ' - ', end_time) as time, location_name, performance.name from practice, location, performance, timeslot
+    $query = "select concat(time_format(start_time, '%h:%i %p'), ' - ', time_format(end_time, '%h:%i %p')) as time, location_name, performance.name from practice, location, performance, timeslot
               where practice.location_id = location.location_id
               and practice.performance_id = performance.performance_id
               and practice.time_id = timeslot.time_id
@@ -71,7 +71,7 @@ function get_daily_practices_by_time_id($time_id) {
 function get_practices_by_date($day, $month, $year) {
     global $db;
 
-    $query = "select concat(start_time, ' - ', end_time) as time, location_name, performance.name from practice, location, performance, timeslot
+    $query = "select concat(time_format(start_time, '%h:%i %p'), ' - ', time_format(end_time, '%h:%i %p')) as time, location_name, performance.name from practice, location, performance, timeslot
               where practice.location_id = location.location_id
               and practice.performance_id = performance.performance_id
               and practice.time_id = timeslot.time_id
@@ -280,7 +280,7 @@ function get_pending_admin_requests() {
               where performance_user_xref.user_id = users.id and performance_user_xref.performance_id = performance.performance_id
               and is_performance_leader = 'P'";
 
-    try{
+    try {
         $statement = $db->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
