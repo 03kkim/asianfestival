@@ -47,7 +47,10 @@ create_header("");
         </li>
     <?php } ?>
 </ul>
+<?php
 
+create_footer();
+?>
 <script>
     // $(document).ready(function(){
     //     $('.collapsible').collapsible();

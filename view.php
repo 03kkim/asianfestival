@@ -16,7 +16,7 @@
     padding: 1.5%;
   }
   h5 {
-    margin: 2% auto;
+    margin: 2% 10%;
   }
   .practices {
     width: 40%;
@@ -29,20 +29,20 @@
   }
 
   #home_logo {
-    padding: 5% 0;
+    padding: 5% 10%;
   }
   </style>"); ?>
 
-    <div id = "home_logo" class="row">
-        <div class="col s12 m12">
-            <div class="card-panel red darken-4 z-depth-5">
-        <span class="white-text center-align"><h1>Asian Festival</h1>
-        </span>
+    <div class="container">
+        <div id="home_logo" class="row">
+            <div class="col s12 m12">
+                <div class="card-panel red darken-4 z-depth-5">
+            <span class="white-text center-align"><h1>Today's Schedule</h1>
+            </span>
+                </div>
             </div>
         </div>
     </div>
-
-<h5>Asian Festival is Ridgewood High School's program for various performance arts in Asian culture.</h5>
 <div class="practices carousel carousel-slider center z-depth-5" id="daily_schedule">
     <div class="carousel-fixed-item center">
         <a class="btn waves-effect white black-text">View Practices</a>

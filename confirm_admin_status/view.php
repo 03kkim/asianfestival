@@ -38,7 +38,10 @@ create_header("");
     </tbody>
 </table>
 </div>
+<?php
 
+create_footer();
+?>
 <script>
     function confirm_admin_status(user_id, performance_id, checked) {
         let url = "../confirm_admin_status/index.php?action=confirm_status&user_id=" + user_id + "&performance_id=" + performance_id + "&checked=" + checked;

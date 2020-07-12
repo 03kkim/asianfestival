@@ -18,6 +18,9 @@
   h5 {
     margin: 2% auto;
   }
+  footer {
+    bottom: 0;
+  }
   .practices {
     width: 40%;
     margin: 0 auto;
@@ -54,3 +57,7 @@
     </button>
     <button style="margin-bottom: 8%" class="btn waves-effect waves-light" value="Cancel" type="submit" name="submit">Cancel</button>
 </form>
+<?php
+
+create_footer();
+?>
