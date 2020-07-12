@@ -42,4 +42,11 @@ switch($action) {
         $locations = get_locations();
         $timeslots = get_timeslots();
         include "create_practice.php";
+
+        break;
+
+    case "add_practice":
+        $performance_id = filter_input(INPUT_POST, "performance_id");
+
+        break;
 }

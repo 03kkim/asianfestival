@@ -5,7 +5,7 @@ create_header("");
 <div class="container" style="margin-top:5%">
 <div class="row">
     <form class="col s12" method="post" action="index.php">
-        <input type="hidden" name="action" value="create_practices">
+        <input type="hidden" name="action" value="add_practice">
         <input type="hidden" name="performance_id" value="<?php echo $performance_id ?>">
         <div class="row">
             <div class="input-field col s6">
