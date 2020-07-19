@@ -47,7 +47,26 @@ switch($action) {
         break;
 
     case "add_practice":
-        $performance_id = filter_input(INPUT_POST, "performance_id");
+        $submit = filter_input(INPUT_POST, "submit");
+        if ($submit != "cancel") {
+            $performance_id = filter_input(INPUT_POST, "performance_id");
+            $location_id = filter_input(INPUT_POST, "location");
+            $date = filter_input(INPUT_POST, "date");
+            $timeslot = filter_input(INPUT_POST, "timeslot");
+            if ($timeslot == "custom") {
+                $start_time = filter_input(INPUT_POST, "start_time");
+                $start_time = date("H:i", strtotime($start_time));
+                $end_time = filter_input(INPUT_POST, "end_time");
+                $end_time = date("H:i", strtotime($end_time));
+                create_custom_timeslot($start_time, $end_time);
+                create_practice_from_custom_times($performance_id, $location_id, $date, $start_time, $end_time);
+            } else {
+                create_practice($performance_id, $location_id, $date, $timeslot);
+            }
+        }
+        else {
+            header("Location: ../practices/index.php");
+        }
 
         break;
 }
