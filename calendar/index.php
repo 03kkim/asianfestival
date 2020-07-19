@@ -46,15 +46,15 @@ function draw_calendar($month,$year){
 
 //      This selects all the practices, but it should be fixed so it selects the practices for only the specific day that is being drawn
         foreach($practices as $practice) {
-            $practice_list[] = $practice["name"];
+            $practice_name_list[] = $practice["name"];
         }
 
 //      If over half the practices are taking place on a certain day, then only the practices that aren't being held will be shown (in red)
         if(count($practice_name_list) > 8) {
             foreach($performance_list as $performance) {
-                if(!in_array($performance, $practice_name_list)) {
+                if(!in_array($performance["name"], $practice_name_list)) {
                     $calendar .= '<div style="text-align:center; height:auto;width:50%" class="card-panel red">';
-                    $calendar .= "<span style='text-align:center;' class='white-text'>" . $performance . "</span>";
+                    $calendar .= "<span style='text-align:center;' class='white-text'>" . $performance["name"] . "</span>";
                     $calendar .= "</div>";
                 }
             }
