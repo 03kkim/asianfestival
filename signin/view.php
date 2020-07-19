@@ -18,9 +18,6 @@
   h5 {
     margin: 2% auto;
   }
-  footer {
-    bottom: 0;
-  }
   .practices {
     width: 40%;
     margin: 0 auto;

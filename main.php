@@ -82,7 +82,7 @@ function create_footer() {
                 <h5 class=\"white-text\">Contact</h5>
                 <ul>
                   <li><a class=\"grey-text text-lighten-3\" href=\"https://www.instagram.com/rhs.asianfest/\">Instagram | @rhs.asianfest</a></li>
-                  <li><a class=\"grey-text text-lighten-3\" href=\"#!\">Link 2</a></li>
+                  <li><a class=\"grey-text text-lighten-3\" href=\"#!\">Questions? | 03kkim@ridgewood.k.12.nj.us</a></li>
                   <li><a class=\"grey-text text-lighten-3\" href=\"#!\">Link 3</a></li>
                   <li><a class=\"grey-text text-lighten-3\" href=\"#!\">Link 4</a></li>
                 </ul>

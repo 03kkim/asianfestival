@@ -41,10 +41,32 @@ function draw_calendar($month,$year){
             $calendar .= "<p> &nbsp&nbsp </p>";
         }
 
+        $practice_name_list = array();
+        $performance_list = get_performances();
+
+//      This selects all the practices, but it should be fixed so it selects the practices for only the specific day that is being drawn
         foreach($practices as $practice) {
-            $calendar .= '<div style="text-align:center; height:auto;width:50%" class="card-panel teal">';
-            $calendar .= "<span style='text-align:center;' class='white-text'>" . $practice["name"] . "</span>";
-            $calendar .= "</div>";
+            $practice_list[] = $practice["name"];
+        }
+
+//      If over half the practices are taking place on a certain day, then only the practices that aren't being held will be shown (in red)
+        if(count($practice_name_list) > 8) {
+            foreach($performance_list as $performance) {
+                if(!in_array($performance, $practice_name_list)) {
+                    $calendar .= '<div style="text-align:center; height:auto;width:50%" class="card-panel red">';
+                    $calendar .= "<span style='text-align:center;' class='white-text'>" . $performance . "</span>";
+                    $calendar .= "</div>";
+                }
+            }
+        }
+//      Else, if less than half the practices are taking place on a certain day, then the practices that are being held on that day will be shown in teal
+        else {
+            foreach($practices as $practice) {
+                $calendar .= '<div style="text-align:center; height:auto;width:50%" class="card-panel teal">';
+                $calendar .= "<span style='text-align:center;' class='white-text'>" . $practice["name"] . "</span>";
+                $calendar .= "</div>";
+
+            }
         }
 
         $calendar.= '</td>';
