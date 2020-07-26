@@ -42,27 +42,43 @@ switch($action) {
         $performance_id = filter_input(INPUT_GET, "performance_id");
         $locations = get_locations();
         $timeslots = get_timeslots();
+
+        foreach ($timeslots as $slot) {
+            echo $slot["time_id"];
+        }
+
         include "create_practice.php";
 
+        echo $performance_id;
         break;
 
     case "add_practice":
+
         $submit = filter_input(INPUT_POST, "submit");
         if ($submit != "cancel") {
             $performance_id = filter_input(INPUT_POST, "performance_id");
-            $location_id = filter_input(INPUT_POST, "location");
+            $location_id = (filter_input(INPUT_POST, "location"));
             $date = filter_input(INPUT_POST, "date");
+            $date=date("Y-m-d",strtotime($date));
             $timeslot = filter_input(INPUT_POST, "timeslot");
+
+
             if ($timeslot == "custom") {
                 $start_time = filter_input(INPUT_POST, "start_time");
                 $start_time = date("H:i", strtotime($start_time));
                 $end_time = filter_input(INPUT_POST, "end_time");
                 $end_time = date("H:i", strtotime($end_time));
+
                 create_custom_timeslot($start_time, $end_time);
+
+                // Hopefully, the $start_time and $end_time can be replaced by $time_id once create_custom_timeslot gets fixed
                 create_practice_from_custom_times($performance_id, $location_id, $date, $start_time, $end_time);
             } else {
+
                 create_practice($performance_id, $location_id, $date, $timeslot);
             }
+
+            header("Location: ../practices/index.php");
         }
         else {
             header("Location: ../practices/index.php");

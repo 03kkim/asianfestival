@@ -19,6 +19,7 @@ create_header("");
             <div class="input-field col s6">
                 <select onchange="toggle_custom_time()" name="timeslot" id="timeslot">
                     <?php foreach ($timeslots as $timeslot) { ?>
+                        // "time" is a concat within an SQL statement in festival_db
                         <option value="<?php echo $timeslot['time_id']?>"><?php echo $timeslot["time"]?></option>
                     <?php } ?>
                     <option value="custom">Custom Time</option>
