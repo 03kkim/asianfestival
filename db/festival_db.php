@@ -310,17 +310,11 @@ function get_locations() {
         exit();
     }
 }
-//create_custom_timeslot($start_time, $end_time);
-//create_practice_from_custom_times($performance_id, $location_id, $date, $start_time, $end_time);
 
 function create_custom_timeslot($start_time, $end_time) {
     global $db;
 
-// This query is giving me an SQL error; not sure why :/:
-//    PDOException: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect time value: ':start_time' for column 'start_time' at row 1 in
-//    /Applications/MAMP/htdocs/asianfestival/db/festival_db.php:325 Stack trace: #0 /Applications/MAMP/htdocs/asianfestival/db/festival_db.php(325):
-//    PDOStatement->execute() #1 /Applications/MAMP/htdocs/asianfestival/practices/index.php(72): create_custom_timeslot('22:49', '23:28') #2 {main}
-    $query = "INSERT INTO timeslot (start_time, end_time, is_public) VALUES (':start_time', ':end_time,', '0')";
+    $query = "INSERT INTO timeslot (start_time, end_time, is_public) VALUES (:start_time, :end_time, 0)";
 
     try {
         $statement = $db->prepare($query);
@@ -353,34 +347,19 @@ function create_custom_timeslot($start_time, $end_time) {
 //    }
 //}
 
-function get_time_id($start_time, $end_time) {
-    global $db;
-
-    $query = "SELECT time_id FROM timeslot WHERE start_time = :start_time AND end_time = :end_time";
-
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(":start_time", $start_time);
-        $statement->bindValue(":end_time", $end_time);
-        $statement->execute();
-        $result = $statement->fetch();
-        $statement->closeCursor();
-
-        return $result;
-    } catch(PDOException $e) {
-        echo $e;
-        exit();
-    }
-}
-
 function create_practice_from_custom_times($performance_id, $location_id, $date, $start_time, $end_time) {
     //Query in normal SQL: INSERT INTO practice ($location_id, $performance_id, time_id, $date)
     //Query to get time_id from start and end times: SELECT time_id from timeslot WHERE start_time = $start_time and end_time = $end_time
     global $db;
 
-
-    $time_id = get_time_id($start_time, $end_time);
-    $query = "INSERT INTO practice (location_id, performance_id, time_id, date) VALUES ('" . $location_id . "', '" . $performance_id . "', '"  . $time_id . "', '". $date . "')";
+    $query = "INSERT INTO practice (location_id, performance_id, time_id, date) 
+              VALUES (:location_id, :performance_id, 
+                (select time_id
+                 from timeslot
+                 where start_time = :start_time
+                 and end_time = :end_time
+                 limit 1), 
+              :date)";
 
     try {
         $statement = $db->prepare($query);

@@ -62,7 +62,6 @@ switch($action) {
             $date=date("Y-m-d",strtotime($date));
             $timeslot = filter_input(INPUT_POST, "timeslot");
 
-
             if ($timeslot == "custom") {
                 $start_time = filter_input(INPUT_POST, "start_time");
                 $start_time = date("H:i", strtotime($start_time));
@@ -74,11 +73,13 @@ switch($action) {
                 // Hopefully, the $start_time and $end_time can be replaced by $time_id once create_custom_timeslot gets fixed
                 create_practice_from_custom_times($performance_id, $location_id, $date, $start_time, $end_time);
             } else {
-
                 create_practice($performance_id, $location_id, $date, $timeslot);
             }
 
             header("Location: ../practices/index.php");
+        }
+        else if ($submit == "continue") {
+            header("Location: ../practices/create_practice.php?performance_id=" . $performance_id);
         }
         else {
             header("Location: ../practices/index.php");
