@@ -23,17 +23,7 @@ function create_header($style="") {
     main {
         flex: 1 0 auto;
     }
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  h1 {
-    margin: 5% auto;
-    padding: 1.5%;
-  }
-  h5 {
-    margin: 2% 10%;
-  }
+
   .practices {
     width: 40%;
     margin: 0 auto;

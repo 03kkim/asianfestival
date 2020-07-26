@@ -316,7 +316,7 @@ function get_locations() {
 function create_custom_timeslot($start_time, $end_time) {
     global $db;
 
-    $query = "INSERT INTO timeslot (start_time, end_time, is_public) VALUES
+    $query = "INSERT INTO timeslot (start_time, end_time, is_public)
               (SELECT * FROM (SELECT :start_time, :end_time, 0) AS tmp 
               WHERE NOT EXISTS (select time_id from timeslot where start_time = :start_time and end_time = :end_time))";
 

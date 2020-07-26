@@ -69,11 +69,9 @@ switch($action) {
             } else {
                 create_practice($performance_id, $location_id, $date, $timeslot);
             }
-
-            header("Location: ../practices/index.php");
         }
-        else if ($submit == "continue") {
-            header("Location: ../practices/create_practice.php?performance_id=" . $performance_id);
+        if ($submit == "continue") {
+            header("Location: ../practices/index.php?action=create_practice&performance_id=" . $performance_id);
         }
         else {
             header("Location: ../practices/index.php");
