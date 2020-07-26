@@ -348,8 +348,6 @@ function create_custom_timeslot($start_time, $end_time) {
 //}
 
 function create_practice_from_custom_times($performance_id, $location_id, $date, $start_time, $end_time) {
-    //Query in normal SQL: INSERT INTO practice ($location_id, $performance_id, time_id, $date)
-    //Query to get time_id from start and end times: SELECT time_id from timeslot WHERE start_time = $start_time and end_time = $end_time
     global $db;
 
     $query = "INSERT INTO practice (location_id, performance_id, time_id, date) 
