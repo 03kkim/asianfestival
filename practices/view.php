@@ -1,5 +1,5 @@
 <?php
-create_header("");
+create_header();
 ?>
 <h1>Practices</h1>
 <ul class="collapsible expandable">

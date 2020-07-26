@@ -3,7 +3,40 @@
 require __DIR__ . '/vendor/autoload.php';
 include "db/festival_db.php";
 
-function create_header($style) {
+function create_header($style = "<style>  
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  main {
+    flex: 1 0 auto;
+  } 
+  h1 {
+    margin: 5% auto;
+    padding: 1.5%;
+  }
+  h5 {
+    margin: 2% 10%;
+  }
+  .practices {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  #logo {
+    margin-left: 1%;
+  }
+
+  #home_logo {
+    padding: 5% 10%;
+  }
+  </style>", $extra_style="") {
     global $auth;
     $header = "<!-- Compiled and minified CSS -->
     <header>

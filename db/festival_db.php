@@ -310,6 +310,8 @@ function get_locations() {
         exit();
     }
 }
+//create_custom_timeslot($start_time, $end_time);
+//create_practice_from_custom_times($performance_id, $location_id, $date, $start_time, $end_time);
 
 function create_custom_timeslot($start_time, $end_time) {
     global $db;
@@ -329,6 +331,7 @@ function create_custom_timeslot($start_time, $end_time) {
 
 }
 
+
 //function get_location_id($location_name) {
 //    global $db;
 //
@@ -346,6 +349,26 @@ function create_custom_timeslot($start_time, $end_time) {
 //        exit();
 //    }
 //}
+
+function get_time_id($start_time, $end_time) {
+    global $db;
+
+    $query = "SELECT time_id FROM timeslot WHERE start_time = :start_time AND end_time = :end_time";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":start_time", $start_time);
+        $statement->bindValue(":end_time", $end_time);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
 
 function create_practice_from_custom_times($performance_id, $location_id, $date, $start_time, $end_time) {
     global $db;
@@ -369,8 +392,7 @@ function create_practice_from_custom_times($performance_id, $location_id, $date,
     }
 }
 
-function create_practice($performance_id, $location_id, $date, $time_id)
-{
+function create_practice($performance_id, $location_id, $date, $time_id) {
     global $db;
 
     $query = "INSERT INTO practice (location_id, performance_id, time_id, date) VALUES (:location_id, :performance_id, :time_id, :date)";
