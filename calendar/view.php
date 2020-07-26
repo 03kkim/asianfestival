@@ -1,5 +1,5 @@
 <?php
-create_header("<style>
+create_header($extra_style="<style>
 .calendar-row {
     height:13vh;
 }
