@@ -29,7 +29,7 @@ function get_timeslots() {
     global $db;
 
     $query = "select concat(time_format(start_time, '%h:%i %p'), ' - ', time_format(end_time, '%h:%i %p')) as time, start_time, end_time, time_id 
-              from timeslot order by start_time";
+              from timeslot where is_public = 1 order by start_time";
 
     try {
         $statement = $db->prepare($query);
@@ -314,7 +314,9 @@ function get_locations() {
 function create_custom_timeslot($start_time, $end_time) {
     global $db;
 
-    $query = "INSERT INTO timeslot (start_time, end_time, is_public) VALUES (:start_time, :end_time, 0)";
+    $query = "INSERT INTO timeslot (start_time, end_time, is_public) VALUES
+              (SELECT * FROM (SELECT :start_time, :end_time, 0) AS tmp 
+              WHERE NOT EXISTS (select time_id from timeslot where start_time = :start_time and end_time = :end_time))";
 
     try {
         $statement = $db->prepare($query);
@@ -361,6 +363,11 @@ function create_practice_from_custom_times($performance_id, $location_id, $date,
 
     try {
         $statement = $db->prepare($query);
+        $statement->bindValue(":location_id", $location_id);
+        $statement->bindValue(":performance_id", $performance_id);
+        $statement->bindValue(":date", $date);
+        $statement->bindValue(":start_time", $start_time);
+        $statement->bindValue(":end_time", $end_time);
         $statement->execute();
         $statement->closeCursor();
     } catch(PDOException $e) {

@@ -43,13 +43,7 @@ switch($action) {
         $locations = get_locations();
         $timeslots = get_timeslots();
 
-        foreach ($timeslots as $slot) {
-            echo $slot["time_id"];
-        }
-
         include "create_practice.php";
-
-        echo $performance_id;
         break;
 
     case "add_practice":
