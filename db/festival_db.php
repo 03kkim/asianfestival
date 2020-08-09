@@ -419,3 +419,19 @@ function create_practice($performance_id, $location_id, $date, $time_id) {
         exit();
     }
 }
+
+function delete_practice($practice_id) {
+    global $db;
+
+    $query = "DELETE FROM practice WHERE practice_id = :practice_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":practice_id", $practice_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
