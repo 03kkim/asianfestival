@@ -435,3 +435,21 @@ function delete_practice($practice_id) {
         exit();
     }
 }
+
+function change_paid_status($user_id, $is_paid) {
+    global $db;
+
+    $query = "UPDATE user_info SET is_paid = :is_paid WHERE user_id = :user_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue("is_paid", $is_paid);
+        $statement->bindValue("user_id", $user_id);
+
+        $statement->execute();
+        $statement->closeCursor();
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
