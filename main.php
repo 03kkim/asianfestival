@@ -23,6 +23,10 @@ function create_header($style="") {
     main {
         flex: 1 0 auto;
     }
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
   .practices {
     width: 40%;

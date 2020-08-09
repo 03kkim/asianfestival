@@ -28,6 +28,7 @@ create_header();
                             <th> Location </th>
                             <th> Date </th>
                             <th> Timeslot </th>
+                            <th> Delete </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,7 @@ create_header();
                             <td> <?php echo $practice["location_name"] ?> </td>
                             <td> <?php echo $practice["formatted_date"] ?> </td>
                             <td> <?php echo $practice["time"] ?> </td>
+                            <td><i class="material-icons">delete</i></td>
                         </tr>
                     <?php } }?>
                     </tbody>
