@@ -35,7 +35,7 @@ create_header();
                     <?php
                     $practices = get_practices_by_performance_id($performance["performance_id"]);
                     if(empty($practices)) {?>
-                        <tr><td colspan="3">There are no upcoming practices for this performance.</td></tr>
+                        <tr><td colspan="4">There are no upcoming practices for this performance.</td></tr>
                     <?php }
                     else {
                         foreach($practices as $practice) { ?>
@@ -43,7 +43,7 @@ create_header();
                             <td> <?php echo $practice["location_name"] ?> </td>
                             <td> <?php echo $practice["formatted_date"] ?> </td>
                             <td> <?php echo $practice["time"] ?> </td>
-                            <td><i class="material-icons">delete</i></td>
+                            <td><i style="color:red;cursor:pointer" onclick='delete_practice("<?php echo $practice['practice_id']?>")' class="material-icons">delete</i></td>
                         </tr>
                     <?php } }?>
                     </tbody>
@@ -76,4 +76,13 @@ create_footer();
 
         xhttp.send();
     }
+
+    function delete_practice(practice_id) {
+        if (confirm("Are you sure you want to delete this practice?")) {
+            location.href = "../practices/index.php?action=delete_practice&practice_id=" + practice_id
+        }
+    }
+
+
+
 </script>

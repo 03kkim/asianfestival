@@ -15,6 +15,11 @@ if(!isset($_GET["action"])){
 }
 
 switch($action) {
+    case "delete_practice":
+        $practice_id = filter_input(INPUT_GET, "practice_id");
+        delete_practice($practice_id);
+
+
     case "show_practices":
         $user_id = $auth->getUserId();
         $user_info = get_user_info($user_id);
