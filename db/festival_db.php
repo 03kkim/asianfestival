@@ -435,3 +435,24 @@ function delete_practice($practice_id) {
         exit();
     }
 }
+
+function get_users_by_performance($performance_id) {
+    global $db;
+
+    $query = "select * from users, user_info, performance_user_xref
+              where users.id = user_info.user_id
+              and performance_user_xref.user_id = users.id
+              and performance_id = :performance_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":performance_id", $performance_id);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}

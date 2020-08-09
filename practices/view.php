@@ -22,13 +22,23 @@ create_header();
                 <?php if($status == "Y") { ?>
                 <a href="../practices/index.php?action=create_practice&performance_id=<?php echo $performance['performance_id']?>" class="waves-effect waves-light btn">Create a Practice</a>
                 <?php } ?>
+                <?php if ($status == "Y") { ?>
+                <div style="margin-top: 3%" class="row">
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s6"><a href="#practices<?php echo $performance["performance_id"]?>">Practices</a></li>
+                            <li class="tab col s6"><a href="#users<?php echo $performance["performance_id"]?>">Users</a></li>
+                        </ul>
+                    </div>
+                    <div id="practices<?php echo $performance["performance_id"] ?>" class="col s12">
+                <?php } ?>
                 <table class="centered">
                     <thead>
                         <tr>
                             <th> Location </th>
                             <th> Date </th>
                             <th> Timeslot </th>
-                            <th> Delete </th>
+                            <?php if ($status == "Y") echo "<th>  </th>" ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,11 +53,37 @@ create_header();
                             <td> <?php echo $practice["location_name"] ?> </td>
                             <td> <?php echo $practice["formatted_date"] ?> </td>
                             <td> <?php echo $practice["time"] ?> </td>
-                            <td><i style="color:red;cursor:pointer" onclick='delete_practice("<?php echo $practice['practice_id']?>")' class="material-icons">delete</i></td>
+                            <?php if ($status == "Y") { ?><td><i style="color:red;cursor:pointer" onclick='delete_practice("<?php echo $practice['practice_id']?>")' class="material-icons">delete</i></td> <?php } ?>
                         </tr>
                     <?php } }?>
                     </tbody>
                 </table>
+                <?php if($status == "Y") { ?>
+                    </div>
+                    <div id="users<?php echo $performance["performance_id"]?>" class="col s12">
+                        <table class="centered">
+                            <thead>
+                                <tr>
+                                    <th> Name </th>
+                                    <th> Email </th>
+                                    <th> Paid Status </th>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach(get_users_by_performance($performance["performance_id"]) as $user) { ?>
+                                <tr>
+                                    <td> <?php echo $user["username"] ?> </td>
+                                    <td> <?php echo $user["email"] ?> </td>
+                                    <td> <?php echo $user["is_paid"] ?> </td>
+                                    <td><i style="color:red;cursor:pointer" class="material-icons">delete</i></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <?php } ?>
             </div>
         </li>
     <?php } ?>
@@ -67,6 +103,10 @@ create_footer();
         accordion: false
     });
 
+    $(document).ready(function(){
+        $('.tabs').tabs();
+    });
+
     function request_admin_status(performance_id, checked) {
         let user_id = "<?php echo $user_id ?>";
         let url = "../practices/index.php?user_id=" + user_id + "&checked=" + checked + "&action=request_admin&performance_id=" + performance_id;
@@ -82,7 +122,5 @@ create_footer();
             location.href = "../practices/index.php?action=delete_practice&practice_id=" + practice_id
         }
     }
-
-
 
 </script>
