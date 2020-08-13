@@ -19,6 +19,10 @@ switch($action) {
         $practice_id = filter_input(INPUT_GET, "practice_id");
         delete_practice($practice_id);
 
+    case "remove_user_from_perf":
+        $user_id1 = filter_input(INPUT_GET, "user_id");
+        $performance_id1 = filter_input(INPUT_GET, "performance_id");
+        remove_user_from_perf($user_id1, $performance_id1);
 
     case "show_practices":
         $user_id = $auth->getUserId();

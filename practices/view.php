@@ -53,7 +53,7 @@ create_header();
                             <td> <?php echo $practice["location_name"] ?> </td>
                             <td> <?php echo $practice["formatted_date"] ?> </td>
                             <td> <?php echo $practice["time"] ?> </td>
-                            <?php if ($status == "Y") { ?><td><i style="color:red;cursor:pointer" onclick='delete_practice("<?php echo $practice['practice_id']?>")' class="material-icons">delete</i></td> <?php } ?>
+                            <?php if ($status == "Y") { ?><td><i style="color:#ff0000;cursor:pointer" onclick='delete_practice("<?php echo $practice['practice_id']?>")' class="material-icons">delete</i></td> <?php } ?>
                         </tr>
                     <?php } }?>
                     </tbody>
@@ -76,7 +76,7 @@ create_header();
                                     <td> <?php echo $user["username"] ?> </td>
                                     <td> <?php echo $user["email"] ?> </td>
                                     <td> <?php echo $user["is_paid"] ?> </td>
-                                    <td><i style="color:red;cursor:pointer" class="material-icons">delete</i></td>
+                                    <td><i style="color:red;cursor:pointer" onclick='remove_user_from_perf("<?php echo $user['id']?>", "<?php echo $performance['performance_id']?>")' class="material-icons">delete</i></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -119,7 +119,12 @@ create_footer();
 
     function delete_practice(practice_id) {
         if (confirm("Are you sure you want to delete this practice?")) {
-            location.href = "../practices/index.php?action=delete_practice&practice_id=" + practice_id
+            location.href = "../practices/index.php?action=delete_practice&practice_id=" + practice_id;
+        }
+    }
+    function remove_user_from_perf(user_id, performance_id) {
+        if (confirm("Are you sure you want to remove this user?")) {
+            location.href = "../practices/index.php?action=delete_practice&user_id=" + user_id + "&performance_id=" + performance_id;
         }
     }
 

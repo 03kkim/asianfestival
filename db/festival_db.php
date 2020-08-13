@@ -456,3 +456,20 @@ function get_users_by_performance($performance_id) {
         exit();
     }
 }
+
+function remove_user_from_perf($user_id, $performance_id) {
+    global $db;
+
+    $query = "DELETE FROM performance_user_xref WHERE user_id = :user_id AND performance_id = :performance_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":user_id", $user_id);
+        $statement->bindValue(":performance_id", $performance_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
