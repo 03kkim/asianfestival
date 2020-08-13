@@ -436,36 +436,21 @@ function delete_practice($practice_id) {
     }
 }
 
-function change_paid_status($user_id, $is_paid) {
+function get_users_by_performance($performance_id) {
     global $db;
 
-    $query = "UPDATE user_info SET is_paid = :is_paid WHERE user_id = :user_id";
+    $query = "select * from users, user_info, performance_user_xref
+              where users.id = user_info.user_id
+              and performance_user_xref.user_id = users.id
+              and performance_id = :performance_id";
 
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue("is_paid", $is_paid);
-        $statement->bindValue("user_id", $user_id);
-
+        $statement->bindValue(":performance_id", $performance_id);
         $statement->execute();
+        $result = $statement->fetchAll();
         $statement->closeCursor();
-    } catch(PDOException $e) {
-        echo $e;
-        exit();
-    }
-}
-
-function delete_user_from_performance($user_id, $performance_id) {
-    global $db;
-
-    $query = "DELETE FROM performance_user_xref WHERE user_id = :user_id AND performance_id = :performance_id";
-
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue("user_id", $user_id);
-        $statement->bindValue("performance_id", $performance_id);
-
-        $statement->execute();
-        $statement->closeCursor();
+        return $result;
     } catch(PDOException $e) {
         echo $e;
         exit();
