@@ -79,7 +79,7 @@ create_header();
                                         <p>
                                         <label>
                                             <input
-                                                <?php if ($user["is_paid"] == "1") echo " checked disabled "?>
+                                                <?php if ($user["is_paid"] == "1") echo " checked "?>
                                                     onchange="change_paid_status('<?php echo $performance["performance_id"]?>', '<?php echo $user["id"]?>', $(this).is(':checked'))"
                                                     type="checkbox">
                                             <span></span>
