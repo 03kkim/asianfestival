@@ -76,13 +76,15 @@ create_header();
                                     <td> <?php echo $user["username"] ?> </td>
                                     <td> <?php echo $user["email"] ?> </td>
                                     <td>
+                                        <p>
                                         <label>
                                             <input
-                                                <?php if ($user["is_paid"] == "1") echo " checked "?>
-                                                <?php if ($user["is_paid"] == "0") echo " disabled " ?>
+                                                <?php if ($user["is_paid"] == "1") echo " checked disabled "?>
                                                     onchange="change_paid_status('<?php echo $performance["performance_id"]?>', '<?php echo $user["id"]?>', $(this).is(':checked'))"
                                                     type="checkbox">
+                                            <span></span>
                                         </label>
+                                        </p>
                                     </td>
                                     <td><i style="color:red;cursor:pointer" onclick='remove_user_from_perf("<?php echo $user['id']?>", "<?php echo $performance['performance_id']?>")' class="material-icons">delete</i></td>
                                 </tr>

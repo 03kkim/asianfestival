@@ -18,16 +18,22 @@ switch($action) {
     case "change_paid_status":
         $performance_id_var = filter_input(INPUT_GET, "performance_id_var");
         $user_id_var = filter_input(INPUT_GET, "user_id_var");
-        $is_paid_var = filter_input(INPUT_GET, "paid_checked")
-        change_paid_status($performance_id_var, $user_id_var, $is_paid_var);
-    case "delete_practice":
-        $practice_id = filter_input(INPUT_GET, "practice_id");
-        delete_practice($practice_id);
+        $is_paid_var = filter_input(INPUT_GET, "paid_checked");
+        change_paid_status($user_id_var, $is_paid_var, $performance_id=$performance_id_var);
+
+        break;
+
 
     case "remove_user_from_perf":
         $user_id1 = filter_input(INPUT_GET, "user_id");
         $performance_id1 = filter_input(INPUT_GET, "performance_id");
         remove_user_from_perf($user_id1, $performance_id1);
+
+        break;
+
+    case "delete_practice":
+        $practice_id = filter_input(INPUT_GET, "practice_id");
+        delete_practice($practice_id);
 
     case "show_practices":
         $user_id = $auth->getUserId();

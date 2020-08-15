@@ -439,7 +439,7 @@ function delete_practice($practice_id) {
 function get_users_by_performance($performance_id) {
     global $db;
 
-    $query = "select * from users, user_info, performance_user_xref
+    $query = "select id, performance_user_xref.is_paid, username, email from users, user_info, performance_user_xref
               where users.id = user_info.user_id
               and performance_user_xref.user_id = users.id
               and performance_id = :performance_id";
@@ -492,7 +492,7 @@ function change_paid_status($user_id, $is_paid, $performance_id="None", $country
         }
     }
     else if ($country_id != "None") {
-        $query = "UPDATE country_user_xref SET is_paid = :is_paid WHERE (country_id = :country_id) and (user_id = :user_id);";
+        $query = "UPDATE performance_user_xref SET is_paid = :is_paid WHERE (performance_id = :performance_id) and (user_id = :user_id);";
         try {
             $statement = $db->prepare($query);
             $statement->bindValue(":performance_id", $performance_id);
