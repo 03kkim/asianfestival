@@ -473,3 +473,20 @@ function remove_user_from_perf($user_id, $performance_id) {
         exit();
     }
 }
+
+function change_paid_status($performance_id, $user_id, $is_paid) {
+    global $db;
+
+    $query = "UPDATE country_user_xref SET is_paid = :is_paid WHERE (country_id = :country_id) and (user_id = :user_id);";
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":performance_id", $performance_id);
+        $statement->bindValue(":user_id", $user_id);
+        $statement->bindValue(":is_paid", $is_paid);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
