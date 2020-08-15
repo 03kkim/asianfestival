@@ -15,6 +15,11 @@ if(!isset($_GET["action"])){
 }
 
 switch($action) {
+    case "change_paid_status":
+        $performance_id_var = filter_input(INPUT_GET, "performance_id_var");
+        $user_id_var = filter_input(INPUT_GET, "user_id_var");
+        $is_paid_var = filter_input(INPUT_GET, "paid_checked")
+        change_paid_status($performance_id_var, $user_id_var, $is_paid_var);
     case "delete_practice":
         $practice_id = filter_input(INPUT_GET, "practice_id");
         delete_practice($practice_id);

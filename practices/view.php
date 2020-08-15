@@ -75,7 +75,15 @@ create_header();
                                 <tr>
                                     <td> <?php echo $user["username"] ?> </td>
                                     <td> <?php echo $user["email"] ?> </td>
-                                    <td> <?php echo $user["is_paid"] ?> </td>
+                                    <td>
+                                        <label>
+                                            <input
+                                                <?php if ($user["is_paid"] == "1") echo " checked "?>
+                                                <?php if ($user["is_paid"] == "0") echo " disabled " ?>
+                                                    onchange="change_paid_status('<?php echo $performance["performance_id"]?>', '<?php echo $user["id"]?>', $(this).is(':checked'))"
+                                                    type="checkbox">
+                                        </label>
+                                    </td>
                                     <td><i style="color:red;cursor:pointer" onclick='remove_user_from_perf("<?php echo $user['id']?>", "<?php echo $performance['performance_id']?>")' class="material-icons">delete</i></td>
                                 </tr>
                                 <?php } ?>
@@ -128,4 +136,11 @@ create_footer();
         }
     }
 
+    function change_paid_status(performance_id, user_id, checked) {
+        let url = "../practices/index.php?user_id_var=" + user_id + "&paid_checked=" + checked + "&action=change_paid_status&performance_id_var=" + performance_id;
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url);
+
+        xhttp.send();
+    }
 </script>

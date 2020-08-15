@@ -474,19 +474,36 @@ function remove_user_from_perf($user_id, $performance_id) {
     }
 }
 
-function change_paid_status($performance_id, $user_id, $is_paid) {
+function change_paid_status($user_id, $is_paid, $performance_id="None", $country_id="None") {
     global $db;
+    if ($performance_id != "None") {
 
-    $query = "UPDATE country_user_xref SET is_paid = :is_paid WHERE (country_id = :country_id) and (user_id = :user_id);";
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(":performance_id", $performance_id);
-        $statement->bindValue(":user_id", $user_id);
-        $statement->bindValue(":is_paid", $is_paid);
-        $statement->execute();
-        $statement->closeCursor();
-    } catch (PDOException $e) {
-        echo $e;
-        exit();
+        $query = "UPDATE country_user_xref SET is_paid = :is_paid WHERE (country_id = :country_id) and (user_id = :user_id);";
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(":performance_id", $performance_id);
+            $statement->bindValue(":user_id", $user_id);
+            $statement->bindValue(":is_paid", $is_paid);
+            $statement->execute();
+            $statement->closeCursor();
+        } catch (PDOException $e) {
+            echo $e;
+            exit();
+        }
     }
+    else if ($country_id != "None") {
+        $query = "UPDATE country_user_xref SET is_paid = :is_paid WHERE (country_id = :country_id) and (user_id = :user_id);";
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(":performance_id", $performance_id);
+            $statement->bindValue(":user_id", $user_id);
+            $statement->bindValue(":is_paid", $is_paid);
+            $statement->execute();
+            $statement->closeCursor();
+        } catch (PDOException $e) {
+            echo $e;
+            exit();
+        }
+    }
+
 }
