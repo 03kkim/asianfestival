@@ -139,7 +139,11 @@ create_footer();
     }
 
     function change_paid_status(performance_id, user_id, checked) {
-        let url = "../practices/index.php?user_id_var=" + user_id + "&paid_checked=" + checked + "&action=change_paid_status&performance_id_var=" + performance_id;
+        let c = 0;
+        if (checked) {
+            c = 1;
+        }
+        let url = "../practices/index.php?user_id_var=" + user_id + "&paid_checked=" + c + "&action=change_paid_status&performance_id_var=" + performance_id;
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", url);
 
