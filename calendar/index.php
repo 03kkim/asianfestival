@@ -53,18 +53,14 @@ function draw_calendar($month,$year){
         if(count($practice_name_list) > 8) {
             foreach($performance_list as $performance) {
                 if(!in_array($performance["name"], $practice_name_list)) {
-                    $calendar .= '<div style="text-align:center; height:auto;width:50%" class="card-panel red">';
-                    $calendar .= "<span style='text-align:center;' class='white-text'>" . $performance["name"] . "</span>";
-                    $calendar .= "</div>";
+                    $calendar .= "<span style='text-align:center;' class='red-text'>" . $performance["name"] . "</span>";
                 }
             }
         }
 //      Else, if less than half the practices are taking place on a certain day, then the practices that are being held on that day will be shown in teal
         else {
             foreach($practices as $practice) {
-                $calendar .= '<div style="text-align:center; height:auto;width:50%" class="card-panel teal">';
-                $calendar .= "<span style='text-align:center;' class='white-text'>" . $practice["name"] . "</span>";
-                $calendar .= "</div>";
+                $calendar .= "<span style='text-align:center;' class='grey-text'>" . $practice["name"] . "</span>";
 
             }
         }
