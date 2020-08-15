@@ -29,6 +29,12 @@ switch($action) {
         $performance_id1 = filter_input(INPUT_GET, "performance_id");
         remove_user_from_perf($user_id1, $performance_id1);
 
+        $user_id = $auth->getUserId();
+        $user_info = get_user_info($user_id);
+        $user_performances = get_performances_by_user_id($user_id);
+
+        include 'view.php';
+
         break;
 
     case "delete_practice":

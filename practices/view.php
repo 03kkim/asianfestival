@@ -134,7 +134,7 @@ create_footer();
     }
     function remove_user_from_perf(user_id, performance_id) {
         if (confirm("Are you sure you want to remove this user?")) {
-            location.href = "../practices/index.php?action=delete_practice&user_id=" + user_id + "&performance_id=" + performance_id;
+            location.href = "../practices/index.php?action=remove_user_from_perf&user_id=" + user_id + "&performance_id=" + performance_id;
         }
     }
 
