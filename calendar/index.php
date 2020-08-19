@@ -54,17 +54,17 @@ function draw_calendar($month,$year){
         }
 //      If over half the practices are taking place on a certain day, then only the practices that aren't being held will be shown (in red)
         if(count($practice_name_list) > count($performance_list)/2) {
-            $calendar .= "<span style='text-align:center;' class='grey-text'>All performances except:</span>";
+            $calendar .= "<span style='text-align:center;' class='grey-text'>All performances except:</span><br>";
             foreach($performance_list as $performance) {
                 if(!in_array($performance["name"], $practice_name_list)) {
-                    $calendar .= "<span style='text-align:center;' class='red-text'>" . $performance["name"] . "</span>";
+                    $calendar .= "<span style='text-align:center;' class='red-text'>" . $performance["name"] . "</span><br>";
                 }
             }
         }
 //      Else, if less than half the practices are taking place on a certain day, then the practices that are being held on that day will be shown in teal
         else {
             foreach($practices as $practice) {
-                $calendar .= "<span style='text-align:center;' class='grey-text'>" . $practice["name"] . "</span>";
+                $calendar .= "<span style='text-align:center;' class='grey-text'>" . $practice["name"] . "</span><br>";
 
             }
         }

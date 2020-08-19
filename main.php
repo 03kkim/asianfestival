@@ -41,7 +41,7 @@ function create_header($style="") {
 
     $navbar = "<nav class=\"red darken-4\">
     <div class=\"nav-wrapper\">
-      <a href=\"/asianfestival/index.php\" class=\"brand-logo\" id=\"logo\">Asian Festival</a>
+      <a href=\"/asianfestival/index.php\" class=\"brand-logo\" id=\"logo\">Asian Fest Practice Manager</a>
       <a href=\"#\" data-target=\"mobile-demo\" class=\"sidenav-trigger\"><i class=\"material-icons\">menu</i></a>
       <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
         <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>";
