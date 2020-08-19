@@ -4,7 +4,8 @@ create_header("<style>
     height:13vh;
 }
 </style>
-");
+"); ?>
+<?php
 $month = date("n");
 echo draw_calendar($month, "2020");
 
