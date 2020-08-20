@@ -21,6 +21,7 @@ switch($action) {
         $performances = get_performances();
         $locations = get_locations();
         $timeslots = get_timeslots();
+        $users = get_users();
 
         include "view.php";
         break;

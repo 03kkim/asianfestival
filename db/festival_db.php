@@ -507,3 +507,22 @@ function change_paid_status($user_id, $is_paid, $performance_id="None", $country
     }
 
 }
+
+function get_users() {
+    global $db;
+
+    $query = "select id, email, username, grade, is_paid from users, user_info
+              where users.id = user_info.user_id";
+//            or should I do where users.id = user_info.user_id
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}

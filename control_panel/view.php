@@ -82,7 +82,29 @@ create_header("");
             </div>
         </div>
     </div>
-    <div id="test2" class="col s12">Test 2</div>
+    <div id="test2" class="col s12">
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Grade</th>
+                <th>Email</th>
+                <th>Has paid? (entire performance)</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach ($users as $user) { ?>
+                <tr>
+                    <td><?php echo $user["username"] ?></td>
+                    <td><?php echo $user["grade"] ?></td>
+                    <td><?php echo $user["email"] ?></td>
+                    <td><?php echo $user["has_paid"] ?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
     <div id="test3" class="col s12">Test 3</div>
     <div id="test4" class="col s12">Test 4</div>
 </div>
