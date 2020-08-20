@@ -99,7 +99,6 @@ create_header();
     <?php } ?>
 </ul>
 <?php
-
 create_footer();
 ?>
 <script>

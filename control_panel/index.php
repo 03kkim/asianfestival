@@ -1,12 +1,16 @@
 <?php
+
+include '../main.php';
+
 if(!$auth->check() || !$auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
     header("Location: /asianfestival/index.php");
 }
+include "view.php";
 $action = filter_input(INPUT_GET, "action");
 if(!isset($_GET["action"])){
     $action = filter_input(INPUT_POST, "action");
     if(!isset($_POST["action"])){
-        $action = "show_users";
+        $action = "create_practice";
     }
 }
 

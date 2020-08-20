@@ -38,7 +38,6 @@ function create_header($style="") {
     padding: 5% 10%;
   }
     </style>";
-
     $navbar = "<nav class=\"red darken-4\">
     <div class=\"nav-wrapper\">
       <a href=\"/asianfestival/index.php\" class=\"brand-logo\" id=\"logo\">Asian Fest Practice Manager</a>
