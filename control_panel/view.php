@@ -6,7 +6,16 @@ create_header("");
     <div class="row">
         <form class="col s12" method="post" action="index.php">
             <input type="hidden" name="action" value="add_practice">
-            <input type="hidden" name="performance_id" value="<?php echo $performance_id ?>">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name="location" id="location">
+                        <?php foreach ($performances as $performance) { ?>
+                            <option value="<?php echo $performance['performance_id']?>"><?php echo $performance["name"]?></option>
+                        <?php } ?>
+                    </select>
+                    <label for="performance_id">Performance</label>
+                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s6">
                     <select name="location" id="location">

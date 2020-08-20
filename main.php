@@ -46,6 +46,9 @@ function create_header($style="") {
         <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>";
         if ($auth->isLoggedIn()) {
             $navbar .= "<li><a href=\"/asianfestival/practices/index.php\">Dashboard</a></li>";
+            if($auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
+                $navbar .= "<li><a href=\"/asianfestival/control_panel\">Control Panel</a></li>";
+            }
             if($auth->hasRole(\Delight\Auth\Role::ADMIN)) {
                 $navbar .= "<li><a href=\"/asianfestival/confirm_admin_status\">Confirm Admins</a></li>";
             }

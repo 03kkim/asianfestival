@@ -19,7 +19,7 @@ switch($action) {
         if(!$auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
             header("Location: /asianfestival/index.php");
         }
-        $performance_id = filter_input(INPUT_GET, "performance_id");
+        $performances = get_performances();
         $locations = get_locations();
         $timeslots = get_timeslots();
 
