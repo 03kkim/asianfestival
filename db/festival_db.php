@@ -539,3 +539,20 @@ function get_users() {
         exit();
     }
 }
+
+function remove_user_from_festival($user_id) {
+    global $db;
+
+    $query = "DELETE FROM country_user_xref, performance_user_xref, user_info WHERE user_id = :user_id;
+              DELETE FROM users WHERE id = :user_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":user_id", $user_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
