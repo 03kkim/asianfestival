@@ -68,12 +68,6 @@ switch($action) {
         $performance_id = filter_input(INPUT_GET, "performance_id");
         $locations = get_locations();
         $timeslots = get_timeslots();
-        try {
-            $auth->admin()->addRoleForUserById(1, \Delight\Auth\Role::SUPER_ADMIN);
-        }
-        catch (\Delight\Auth\UnknownIdException $e) {
-            die('Unknown user ID');
-        }
 
         include "create_practice.php";
         break;

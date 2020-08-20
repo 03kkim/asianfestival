@@ -8,7 +8,7 @@ create_header("");
             <input type="hidden" name="action" value="add_practice">
             <div class="row">
                 <div class="input-field col s12">
-                    <select name="location" id="location">
+                    <select name="performance_id" id="performance_id">
                         <?php foreach ($performances as $performance) { ?>
                             <option value="<?php echo $performance['performance_id']?>"><?php echo $performance["name"]?></option>
                         <?php } ?>
