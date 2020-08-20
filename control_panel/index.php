@@ -14,6 +14,13 @@ if(!isset($_GET["action"])){
 }
 
 switch($action) {
+    case "change_paid_status":
+        $user_id = filter_input(INPUT_GET, "user_id");
+        $is_paid = filter_input(INPUT_GET, "is_paid");
+        change_paid_status($user_id, $is_paid);
+
+        break;
+
     case "create_practice":
         if(!$auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
             header("Location: /asianfestival/index.php");

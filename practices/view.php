@@ -137,12 +137,12 @@ create_footer();
         }
     }
 
-    function change_paid_status(performance_id, user_id, checked) {
+    function change_paid_status(user_id, checked) {
         let c = 0;
         if (checked) {
             c = 1;
         }
-        let url = "../practices/index.php?user_id_var=" + user_id + "&paid_checked=" + c + "&action=change_paid_status&performance_id_var=" + performance_id;
+        let url = "../control_panel/index.php?user_id=" + user_id + "&is_paid=" + c + "&action=change_paid_status&performance_id_var=" + performance_id;
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", url);
 

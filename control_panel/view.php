@@ -99,7 +99,16 @@ create_header("");
                     <td><?php echo $user["username"] ?></td>
                     <td><?php echo $user["grade"] ?></td>
                     <td><?php echo $user["email"] ?></td>
-                    <?php if ($status == "Y") { ?><td><i style="color:#ff0000;cursor:pointer" onclick='change_paid_status("<?php echo $user["has_paid"]?>")' class="material-icons">delete</i></td> <?php } ?>
+                    <td>
+                        <p>
+                            <label>
+                                <input
+                                    <?php if ($user["is_paid"] == "1") echo " checked "?>
+                                        onchange="change_paid_status('<?php echo $user["id"]?>', $(this).is(':checked'))" type="checkbox">
+                                <span></span>
+                            </label>
+                        </p>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -135,6 +144,17 @@ create_header("");
             start.style.display = "none";
             end.style.display = "none";
         }
+    }
+    function change_paid_status(user_id, checked) {
+        let c = 0;
+        if (checked) {
+            c = 1;
+        }
+        let url = "../control_panel/index.php?user_id=" + user_id + "&is_paid=" + c + "&action=change_paid_status";
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url);
+
+        xhttp.send();
     }
 </script>
 
