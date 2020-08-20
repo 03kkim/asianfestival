@@ -505,6 +505,19 @@ function change_paid_status($user_id, $is_paid, $performance_id="None", $country
             exit();
         }
     }
+    else {
+        $query = "UPDATE user_info SET is_paid = :is_paid WHERE user_id = :user_id;";
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(":user_id", $user_id);
+            $statement->bindValue(":is_paid", $is_paid);
+            $statement->execute();
+            $statement->closeCursor();
+        } catch (PDOException $e) {
+            echo $e;
+            exit();
+        }
+    }
 
 }
 

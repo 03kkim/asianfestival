@@ -99,7 +99,7 @@ create_header("");
                     <td><?php echo $user["username"] ?></td>
                     <td><?php echo $user["grade"] ?></td>
                     <td><?php echo $user["email"] ?></td>
-                    <td><?php echo $user["has_paid"] ?></td>
+                    <?php if ($status == "Y") { ?><td><i style="color:#ff0000;cursor:pointer" onclick='change_paid_status("<?php echo $user["has_paid"]?>")' class="material-icons">delete</i></td> <?php } ?>
                 </tr>
                 <?php } ?>
             </tbody>
