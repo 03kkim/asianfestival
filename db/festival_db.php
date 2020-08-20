@@ -543,7 +543,9 @@ function get_users() {
 function remove_user_from_festival($user_id) {
     global $db;
 
-    $query = "DELETE FROM country_user_xref, performance_user_xref, user_info WHERE user_id = :user_id;
+    $query = "DELETE FROM country_user_xref WHERE user_id = :user_id;
+              DELETE FROM performance_user_xref WHERE user_id = :user_id;
+              DELETE FROM user_info WHERE user_id = :user_id;
               DELETE FROM users WHERE id = :user_id";
 
     try {

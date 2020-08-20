@@ -90,6 +90,7 @@ create_header("");
                 <th>Grade</th>
                 <th>Email</th>
                 <th>Has paid? (entire performance)</th>
+                <th> </th>
             </tr>
             </thead>
 
@@ -109,6 +110,7 @@ create_header("");
                             </label>
                         </p>
                     </td>
+                    <td><i style="color:red;cursor:pointer" onclick='remove_user_from_festival("<?php echo $user['id']?>")' class="material-icons">delete</i></td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -155,6 +157,11 @@ create_header("");
         xhttp.open("GET", url);
 
         xhttp.send();
+    }
+    function remove_user_from_festival(user_id) {
+        if (confirm("Are you sure you want to remove this user?")) {
+            location.href = "../control_panel/index.php?action=remove_user_from_festival&user_id=" + user_id;
+        }
     }
 </script>
 

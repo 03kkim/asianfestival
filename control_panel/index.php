@@ -21,6 +21,18 @@ switch($action) {
 
         break;
 
+    case "remove_user_from_festival":
+        $user_id = filter_input(INPUT_GET, "user_id");
+        remove_user_from_festival($user_id);
+
+        $user_id = $auth->getUserId();
+        $user_info = get_user_info($user_id);
+        $user_performances = get_performances_by_user_id($user_id);
+
+        include 'view.php';
+
+        break;
+
     case "create_practice":
         if(!$auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
             header("Location: /asianfestival/index.php");
