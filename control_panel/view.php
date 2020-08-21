@@ -83,15 +83,15 @@ create_header("");
         </div>
     </div>
     <div id="test2" class="col s12">
-        <table>
+        <table class="centered">
             <thead>
-            <tr>
-                <th>Name</th>
-                <th>Grade</th>
-                <th>Email</th>
-                <th>Has paid? (entire performance)</th>
-                <th> </th>
-            </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Grade</th>
+                    <th>Email</th>
+                    <th>Has paid? (entire performance)</th>
+                    <th>Delete (entire performance) </th>
+                </tr>
             </thead>
 
             <tbody>

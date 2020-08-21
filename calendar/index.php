@@ -106,5 +106,6 @@ if(!isset($_GET["action"])){
 
 switch($action) {
     case "show_calendar":
+        $custom_month = filter_input(INPUT_GET, "month");
         include 'view.php';
 }
