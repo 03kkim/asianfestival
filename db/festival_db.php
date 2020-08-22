@@ -165,10 +165,14 @@ function add_user($email, $password, $first_name, $last_name, $grade, $performan
 function get_performances_by_user_id($user_id) {
     global $db;
 
-    $query = "select * from performance, performance_user_xref, country
-              where user_id = :user_id 
-              and performance.performance_id = performance_user_xref.performance_id
-              and performance.country_id = country.country_id";
+    $query = "select distinct performance.performance_id, country.country_id, name, country_name from performance, performance_user_xref, country, country_user_xref
+              where ((performance.performance_id = performance_user_xref.performance_id and performance_user_xref.user_id = :user_id)
+              or (country_user_xref.is_country_leader = 1
+	                and country_user_xref.country_id = performance.country_id
+                    and country_user_xref.user_id = :user_id
+                 ))
+              and performance.country_id = country.country_id
+              order by country.country_id";
 
     try {
         $statement = $db->prepare($query);
@@ -251,10 +255,31 @@ function get_user_info($user_id) {
     }
 }
 
+function get_country_by_performance_id($performance_id) {
+    global $db;
+
+    $query = "select * from country, performance where performance.country_id = country.country_id and performance_id = :performance_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":performance_id", $performance_id);
+
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $statement->closeCursor();
+
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
+
 function check_performance_leader($user_id, $performance_id) {
     global $db;
 
-    $query = "select * from performance_user_xref where user_id = :user_id and performance_id = :performance_id";
+    $query = "select * from  performance_user_xref where user_id = :user_id and performance_id = :performance_id";
 
     try {
         $statement = $db->prepare($query);
@@ -266,7 +291,42 @@ function check_performance_leader($user_id, $performance_id) {
 
         $statement->closeCursor();
 
-        return $result["is_performance_leader"];
+        $is_country_leader = check_country_leader($user_id, get_country_by_performance_id($performance_id)["country_id"]);
+
+        if(isset($is_country_leader["is_country_leader"])) {
+            if($is_country_leader["is_country_leader"] == "1") return "Y";
+        }
+        else if(isset($result["is_performance_leader"])) {
+            return $result["is_performance_leader"];
+        }
+        else {
+            return "N";
+        }
+
+
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
+
+function check_country_leader($user_id, $country_id) {
+    global $db;
+
+    $query = "select is_country_leader from country_user_xref where country_id = :country_id and user_id = :user_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":user_id", $user_id);
+        $statement->bindValue(":country_id", $country_id);
+
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $statement->closeCursor();
+
+        return $result;
+
     } catch(PDOException $e) {
         echo $e;
         exit();
@@ -282,6 +342,28 @@ function get_pending_admin_requests() {
 
     try {
         $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
+
+function get_pending_admin_requests_by_performance($performance_id) {
+    global $db;
+
+    $query = "select * from performance_user_xref, users, performance
+              where performance_user_xref.user_id = users.id and performance_user_xref.performance_id = performance.performance_id
+              and is_performance_leader = 'P'
+              and performance.performance_id = :performance_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":performance_id", $performance_id);
         $statement->execute();
         $result = $statement->fetchAll();
         $statement->closeCursor();

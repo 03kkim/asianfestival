@@ -26,8 +26,9 @@ create_header();
                 <div style="margin-top: 3%" class="row">
                     <div class="col s12">
                         <ul class="tabs">
-                            <li class="tab col s6"><a href="#practices<?php echo $performance["performance_id"]?>">Practices</a></li>
-                            <li class="tab col s6"><a href="#users<?php echo $performance["performance_id"]?>">Users</a></li>
+                            <li class="tab col s4"><a href="#practices<?php echo $performance["performance_id"]?>">Practices</a></li>
+                            <li class="tab col s4"><a href="#users<?php echo $performance["performance_id"]?>">Users</a></li>
+                            <li class="tab col s4"><a href="#admins<?php echo $performance["performance_id"]?>">Pending Admins</a></li>
                         </ul>
                     </div>
                     <div id="practices<?php echo $performance["performance_id"] ?>" class="col s12">
@@ -71,7 +72,14 @@ create_header();
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach(get_users_by_performance($performance["performance_id"]) as $user) { ?>
+                                <?php
+                                $users = get_users_by_performance($performance["performance_id"]);
+                                if(empty($users)) {?>
+                                    <tr><td colspan="4">There are currently no users for this performance. </td></tr>
+                                <?php }
+                                else {
+                                ?>
+                                <?php foreach($users as $user) { ?>
                                 <tr>
                                     <td> <?php echo $user["username"] ?> </td>
                                     <td> <?php echo $user["email"] ?> </td>
@@ -88,11 +96,45 @@ create_header();
                                     </td>
                                     <td><i style="color:red;cursor:pointer" onclick='remove_user_from_perf("<?php echo $user['id']?>", "<?php echo $performance['performance_id']?>")' class="material-icons">delete</i></td>
                                 </tr>
-                                <?php } ?>
+                                <?php } } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="admins<?php echo $performance["performance_id"]?>" class="col s12">
+                        <table class="centered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Confirm Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $requests = get_pending_admin_requests_by_performance($performance["performance_id"]);
+                                if(empty($requests)) {?>
+                                    <tr><td colspan="4">There are currently no pending admin requests for this performance. </td></tr>
+                                <?php }
+                                else {
+                                foreach($requests as $request) { ?>
+                                <tr>
+                                    <td><?php echo $request["username"] ?></td>
+                                    <td><?php echo $request["email"]?></td>
+                                    <td>
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" onchange="confirm_admin_status('<?php echo $request["id"] ?>', '<?php echo $request["performance_id"]?>', $(this).is(':checked'))" >
+                                                <span></span>
+                                            </label>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <?php } } ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
+
                 <?php } ?>
             </div>
         </li>
@@ -143,6 +185,14 @@ create_footer();
             c = 1;
         }
         let url = "../control_panel/index.php?user_id=" + user_id + "&is_paid=" + c + "&action=change_paid_status&performance_id_var=" + performance_id;
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url);
+
+        xhttp.send();
+    }
+    function confirm_admin_status(user_id, performance_id, checked) {
+        let url = "../practices/index.php?action=confirm_status&user_id=" + user_id + "&performance_id=" + performance_id + "&checked=" + checked;
+
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", url);
 

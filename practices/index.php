@@ -106,4 +106,20 @@ switch($action) {
         }
 
         break;
+
+    case "confirm_status":
+        $user_id = filter_input(INPUT_GET, "user_id");
+        $performance_id = filter_input(INPUT_GET,"performance_id");
+        $checked = filter_input(INPUT_GET, "checked");
+
+        $status = "N";
+        if ($checked == "true") {
+            $auth->admin()->addRoleForUserById($user_id, \Delight\Auth\Role::ADMIN);
+            $status = "Y";
+        }
+        else {
+            $auth->admin()->removeRoleForUserById($user_id, \Delight\Auth\Role::ADMIN);
+        }
+        change_admin_status($user_id, $performance_id, $status);
+        break;
 }
