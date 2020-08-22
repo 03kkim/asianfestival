@@ -6,7 +6,7 @@ function draw_calendar($month,$year){
     /* draw table */
     $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September"
                     , "October", "November", "December");
-    $calendar = '<h1 style="text-align:center"> Practices for ' . $months[$month-1] . ' ' . $year . '</h1>';
+//    $calendar = '<h1 style="text-align:center"> Practices for ' . $months[$month-1] . ' ' . $year . '</h1>';
 
     $calendar .= '<table style="table-layout:fixed" cellpadding="0" cellspacing="0" class="calendar">';
 
