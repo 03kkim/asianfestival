@@ -6,18 +6,17 @@ create_header("<style>
 </style>
 ");
 ?>
-<?php
-$month = date("n");
-$year = date("Y");
-$months = array("January", "February", "March", "April", "May", "June", "July", "August", "September"
-, "October", "November", "December");
-$calendar = '<h1 style="text-align:center"> Practices for ' . $months[$month-1] . ' ' . $year . '</h1>';
- ?>
-<h1 style="text-align:center"> Practices for <i style="color:#ff0000;cursor:pointer;font-size:2.5rem" onclick='last_month($month)' class="material-icons">chevron_left</i><?php echo $months[$month-1] ?><i style="color:#ff0000;cursor:pointer;font-size:2.5rem" onclick='last_month($month)' class="material-icons">chevron_right</i> <?php echo $year ?> </h1>
+<h1 style="text-align:center"> Practices for <i style="color:#ff0000;cursor:pointer;font-size:2.5rem" onclick='last_month(<?php echo $month ?>)' class="material-icons">chevron_left</i><?php echo $months[$month-1] ?><i style="color:#ff0000;cursor:pointer;font-size:2.5rem" onclick='next_month(<?php echo $month ?>)' class="material-icons">chevron_right</i> <?php echo $year ?> </h1>
 <script>
-    function next_month(month)
-    function last_month(month)
+    function next_month(month) {
+        location.href = "../calendar/index.php?month=" + (month - 1);
+    }
+    function next_month(month) {
+        location.href = "../calendar/index.php?month=" + (month + 1);
+    }
+
 </script>
 <?php echo
-draw_calendar($month, "2020");
+draw_calendar((int)$month, "2020");
+echo $month;
 create_footer(); ?>
