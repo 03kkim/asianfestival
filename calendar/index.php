@@ -8,7 +8,7 @@ function draw_calendar($month,$year){
                     , "October", "November", "December");
 //    $calendar = '<h1 style="text-align:center"> Practices for ' . $months[$month-1] . ' ' . $year . '</h1>';
 
-    $calendar .= '<table style="table-layout:fixed" cellpadding="0" cellspacing="0" class="calendar">';
+    $calendar = '<table style="table-layout:fixed" cellpadding="0" cellspacing="0" class="calendar">';
 
     /* table headings */
     $headings = array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
