@@ -6,7 +6,7 @@ create_header("");
         <ul class="tabs">
             <li class="tab col s3"><a class="active" href="#test1">Create Practice</a></li>
             <li class="tab col s3"><a href="#test2">View Users</a></li>
-            <li class="tab col s3"><a href="#test3">Disabled Tab</a></li>
+            <li class="tab col s3"><a href="#test3">Country Leader</a></li>
             <li class="tab col s3"><a href="#test4">Test 4</a></li>
         </ul>
     </div>
@@ -89,8 +89,8 @@ create_header("");
                     <th>Name</th>
                     <th>Grade</th>
                     <th>Email</th>
-                    <th>Has paid? (entire performance)</th>
-                    <th>Delete (entire performance) </th>
+                    <th>Has paid? (All Perfs)</th>
+                    <th>Delete (All Perfs) </th>
                 </tr>
             </thead>
 

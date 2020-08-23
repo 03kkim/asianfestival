@@ -102,6 +102,7 @@ if (!isset($_GET["month"])) {
 //    $_GET["month"] = date("n");
     header("Location: /asianfestival/calendar/index.php?month=" . date("n"));
 }
+
 $month = $_GET["month"];
 $year = date("Y");
 $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September"

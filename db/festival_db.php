@@ -640,3 +640,22 @@ function remove_user_from_festival($user_id) {
         exit();
     }
 }
+
+function set_country_leader_status($user_id, $country_id, $status) {
+    global $db;
+
+    $query = "UPDATE country_user_xref SET is_country_leader = :status WHERE (country_id = :country_id) and (user_id = :user_id);";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":user_id", $user_id);
+        $statement->bindValue(":country_id", $country_id);
+        $statement->bindValue(":status", $status);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+
+}
