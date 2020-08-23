@@ -137,9 +137,23 @@ create_header("");
                     <td>
                         <div class="input-field col s12">
                             <select name="country_id" id="country_id">
-                                <?php foreach ($countries as $country) { ?>
-                                <option value="<?php echo $country["country_id"] ?>"><?php echo $country["country_name"] ?></option>
-                                <?php } ?>
+                                <?php
+                                $country_leader_statuses = array();
+                                foreach ($countries as $country) {
+                                    $style = "";
+                                    $country_leader_statuses[] = check_country_leader($user["id"], $country["country_id"])["is_country_leader"];
+                                    if (check_country_leader($user["id"], $country["country_id"])["is_country_leader"] == 1) {
+                                        $style = "selected";
+                                    }?>
+                                <option value="<?php echo $country["country_id"] ?>" <?php echo $style ?>><?php echo $country["country_name"]?></option>
+                                <?php }
+
+                                $style = "selected";
+                                if (in_array(1, $country_leader_statuses)) {
+                                    $style = "";
+                                }
+                                ?>
+                                <option value="6" <?php echo $style ?>>Not a Country Leader</option>
                             </select>
                             <label for="country_id">Materialize Select</label>
                         </div>
