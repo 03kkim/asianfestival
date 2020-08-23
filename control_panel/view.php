@@ -135,14 +135,15 @@ create_header("");
                     <td><?php echo $user["grade"] ?></td>
                     <td><?php echo $user["email"] ?></td>
                     <td>
-                        <p>
-                            <label>
-                                <input
-                                    <?php if ($user["is_paid"] == "1") echo " checked "?>
-                                        onchange="change_paid_status('<?php echo $user["id"]?>', $(this).is(':checked'))" type="checkbox">
-                                <span></span>
-                            </label>
-                        </p>
+                        <div class="input-field col s12">
+                            <select>
+                                <?php foreach
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Materialize Select</label>
+                        </div>
                     </td>
                     <td><i style="color:red;cursor:pointer" onclick='remove_user_from_festival("<?php echo $user['id']?>")' class="material-icons">delete</i></td>
                 </tr>

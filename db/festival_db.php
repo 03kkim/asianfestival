@@ -112,6 +112,23 @@ function get_performances() {
     }
 }
 
+function get_countries() {
+    global $db;
+
+    $query = "select * from country";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
+
 function str_lreplace($search, $replace, $subject)
 {
     $pos = strrpos($subject, $search);

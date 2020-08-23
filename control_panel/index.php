@@ -45,6 +45,7 @@ switch($action) {
         $locations = get_locations();
         $timeslots = get_timeslots();
         $users = get_users();
+        $countries = get_countries();
 
         include "view.php";
         break;
