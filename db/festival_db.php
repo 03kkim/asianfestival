@@ -641,10 +641,11 @@ function remove_user_from_festival($user_id) {
     }
 }
 
-function set_country_leader_status($user_id, $country_id, $status) {
+function change_country_leader_status($user_id, $country_id, $status) {
     global $db;
 
-    $query = "UPDATE country_user_xref SET is_country_leader = :status WHERE (country_id = :country_id) and (user_id = :user_id);";
+    $query = "UPDATE country_user_xref SET is_country_leader = :status WHERE (country_id = :country_id) and (user_id = :user_id);
+              UPDATE performance_user_xref SET is_performance_leader = :status WHERE (performance_id = (SELECT performance_id FROM performance WHERE country_id = :country_id)) and (user_id = :user_id)";
 
     try {
         $statement = $db->prepare($query);
