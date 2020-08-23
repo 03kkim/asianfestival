@@ -136,13 +136,12 @@ create_header("");
                     <td><?php echo $user["email"] ?></td>
                     <td>
                         <div class="input-field col s12">
-                            <select>
-                                <?php foreach
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
+                            <select name="country_id" id="country_id">
+                                <?php foreach ($countries as $country) { ?>
+                                <option value="<?php echo $country["country_id"] ?>"><?php echo $country["country_name"] ?></option>
+                                <?php } ?>
                             </select>
-                            <label>Materialize Select</label>
+                            <label for="country_id">Materialize Select</label>
                         </div>
                     </td>
                     <td><i style="color:red;cursor:pointer" onclick='remove_user_from_festival("<?php echo $user['id']?>")' class="material-icons">delete</i></td>
