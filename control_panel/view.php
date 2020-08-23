@@ -116,7 +116,40 @@ create_header("");
             </tbody>
         </table>
     </div>
-    <div id="test3" class="col s12">Test 3</div>
+    <div id="test3" class="col s12">
+        <table class="centered">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Grade</th>
+                <th>Email</th>
+                <th>Country Leader</th>
+                <th>Performance Leader</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <?php foreach ($users as $user) { ?>
+                <tr>
+                    <td><?php echo $user["username"] ?></td>
+                    <td><?php echo $user["grade"] ?></td>
+                    <td><?php echo $user["email"] ?></td>
+                    <td>
+                        <p>
+                            <label>
+                                <input
+                                    <?php if ($user["is_paid"] == "1") echo " checked "?>
+                                        onchange="change_paid_status('<?php echo $user["id"]?>', $(this).is(':checked'))" type="checkbox">
+                                <span></span>
+                            </label>
+                        </p>
+                    </td>
+                    <td><i style="color:red;cursor:pointer" onclick='remove_user_from_festival("<?php echo $user['id']?>")' class="material-icons">delete</i></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
     <div id="test4" class="col s12">Test 4</div>
 </div>
 <script>
@@ -158,6 +191,13 @@ create_header("");
 
         xhttp.send();
     }
+    function change_country_leader_status(user_id, country_id, checked) {
+        let c = 0;
+        if (checked) {
+            c = 1;
+        }
+        let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + country_id + "status=" + c + "&action=change_country_leader_status";
+     }
     function remove_user_from_festival(user_id) {
         if (confirm("Are you sure you want to remove this user?")) {
             location.href = "../control_panel/index.php?action=remove_user_from_festival&user_id=" + user_id;
