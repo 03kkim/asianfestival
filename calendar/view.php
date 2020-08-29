@@ -19,5 +19,4 @@ create_header("<style>
 
 <?php echo
 draw_calendar((int)$month, "2020");
-echo $month;
 create_footer(); ?>
