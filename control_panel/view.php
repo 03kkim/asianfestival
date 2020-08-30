@@ -136,7 +136,7 @@ create_header("");
                     <td><?php echo $user["email"] ?></td>
                     <td>
                         <div class="input-field col s12">
-                            <select name="country_id" id="country_id">
+                            <select name="country_id" id="country_id" onchange="change_country_leader_status(<?php echo $user["id"]?>, <?php echo $country["country_id"] ?>)">
                                 <?php
                                 $country_leader_statuses = array();
                                 foreach ($countries as $country) {
@@ -155,7 +155,7 @@ create_header("");
                                 ?>
                                 <option value="6" <?php echo $style ?>>Not a Country Leader</option>
                             </select>
-                            <label for="country_id">Materialize Select</label>
+                            <label for="country_id"></label>
                         </div>
                     </td>
                     <td><i style="color:red;cursor:pointer" onclick='remove_user_from_festival("<?php echo $user['id']?>")' class="material-icons">delete</i></td>
@@ -205,12 +205,8 @@ create_header("");
 
         xhttp.send();
     }
-    function change_country_leader_status(user_id, country_id, checked) {
-        let c = 0;
-        if (checked) {
-            c = 1;
-        }
-        let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + country_id + "status=" + c + "&action=change_country_leader_status";
+    function change_country_leader_status(user_id, country_id) {
+            let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + country_id + "&action=change_country_leader_status";
      }
     function remove_user_from_festival(user_id) {
         if (confirm("Are you sure you want to remove this user?")) {

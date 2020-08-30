@@ -36,6 +36,7 @@ switch($action) {
     case "change_country_leader_status":
         $user_id = filter_input(INPUT_GET, "user_id");
         $country_id = filter_input(INPUT_GET, "country_id");
+        change_country_leader_status($user_id, $country_id);
 
     case "create_practice":
         if(!$auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {

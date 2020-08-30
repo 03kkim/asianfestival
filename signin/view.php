@@ -47,6 +47,15 @@
             <input id="password" name="password" type="password">
         </div>
     </div>
+    <div>
+    <p>
+        <label>
+            <input type="checkbox" class="filled-in" id="remember" name="remember"/>
+            <span>Remember Login?</span>
+        </label>
+    </p>
+    <br>
+    </div>
     </div>
     <button style="margin-bottom: 8%;margin-right:8%" class="btn waves-effect waves-light" value="Submit" type="submit" name="submit">
         Submit

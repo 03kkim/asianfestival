@@ -658,17 +658,23 @@ function remove_user_from_festival($user_id) {
     }
 }
 
-function change_country_leader_status($user_id, $country_id, $status) {
+function change_country_leader_status($user_id, $country_id) {
     global $db;
-
-    $query = "UPDATE country_user_xref SET is_country_leader = :status WHERE (country_id = :country_id) and (user_id = :user_id);
-              UPDATE performance_user_xref SET is_performance_leader = :status WHERE (performance_id = (SELECT performance_id FROM performance WHERE country_id = :country_id)) and (user_id = :user_id)";
-
+    # removes all privileges from the user
+    $query = "UPDATE country_user_xref SET is_country_leader = 0 WHERE (user_id = :user_id);
+              UPDATE performance_user_xref SET is_performance_leader = 0 WHERE (user_id = :user_id);";
+    if ($country_id == 7) {
+        # would be used to assign user as country leader for all countries
+        $query .= "";
+    }
+    elseif ($country_id > 0 and $country_id < 6) {
+        $query .= "\nUPDATE country_user_xref SET is_country_leader = 1 WHERE (country_id = :country_id) and (user_id = :user_id);
+              UPDATE performance_user_xref SET is_performance_leader = 1 WHERE (performance_id = (SELECT performance_id FROM performance WHERE country_id = :country_id)) and (user_id = :user_id)";
+    }
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(":user_id", $user_id);
         $statement->bindValue(":country_id", $country_id);
-        $statement->bindValue(":status", $status);
         $statement->execute();
         $statement->closeCursor();
     } catch(PDOException $e) {

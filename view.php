@@ -1,5 +1,4 @@
 <?php create_header(); ?>
-
     <div class="container">
         <div id="home_logo" class="row">
             <div class="col s12 m12">
