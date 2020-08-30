@@ -33,6 +33,11 @@ switch($action) {
 
         break;
 
+    case "change_country_leader_status":
+        $user_id = filter_input(INPUT_GET, "user_id");
+        $country_id = filter_input(INPUT_GET, "country_id");
+        change_country_leader_status($user_id, $country_id);
+
     case "create_practice":
         if(!$auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
             header("Location: /asianfestival/index.php");
@@ -41,6 +46,7 @@ switch($action) {
         $locations = get_locations();
         $timeslots = get_timeslots();
         $users = get_users();
+        $countries = get_countries();
 
         include "view.php";
         break;

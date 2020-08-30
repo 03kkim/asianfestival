@@ -6,7 +6,7 @@ create_header("");
         <ul class="tabs">
             <li class="tab col s3"><a class="active" href="#test1">Create Practice</a></li>
             <li class="tab col s3"><a href="#test2">View Users</a></li>
-            <li class="tab col s3"><a href="#test3">Disabled Tab</a></li>
+            <li class="tab col s3"><a href="#test3">Country Leader</a></li>
             <li class="tab col s3"><a href="#test4">Test 4</a></li>
         </ul>
     </div>
@@ -89,8 +89,8 @@ create_header("");
                     <th>Name</th>
                     <th>Grade</th>
                     <th>Email</th>
-                    <th>Has paid? (entire performance)</th>
-                    <th>Delete (entire performance) </th>
+                    <th>Has paid? (All Perfs)</th>
+                    <th>Delete (All Perfs) </th>
                 </tr>
             </thead>
 
@@ -116,7 +116,54 @@ create_header("");
             </tbody>
         </table>
     </div>
-    <div id="test3" class="col s12">Test 3</div>
+    <div id="test3" class="col s12">
+        <table class="centered">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Grade</th>
+                <th>Email</th>
+                <th>Country Leader</th>
+                <th>Performance Leader</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <?php foreach ($users as $user) { ?>
+                <tr>
+                    <td><?php echo $user["username"] ?></td>
+                    <td><?php echo $user["grade"] ?></td>
+                    <td><?php echo $user["email"] ?></td>
+                    <td>
+                        <div class="input-field col s12">
+                            <select name="country_id" id="country_id" onchange="change_country_leader_status(<?php echo $user["id"]?>, <?php echo $country["country_id"] ?>)">
+                                <?php
+                                $country_leader_statuses = array();
+                                foreach ($countries as $country) {
+                                    $style = "";
+                                    $country_leader_statuses[] = check_country_leader($user["id"], $country["country_id"])["is_country_leader"];
+                                    if (check_country_leader($user["id"], $country["country_id"])["is_country_leader"] == 1) {
+                                        $style = "selected";
+                                    }?>
+                                <option value="<?php echo $country["country_id"] ?>" <?php echo $style ?>><?php echo $country["country_name"]?></option>
+                                <?php }
+
+                                $style = "selected";
+                                if (in_array(1, $country_leader_statuses)) {
+                                    $style = "";
+                                }
+                                ?>
+                                <option value="6" <?php echo $style ?>>Not a Country Leader</option>
+                            </select>
+                            <label for="country_id"></label>
+                        </div>
+                    </td>
+                    <td><i style="color:red;cursor:pointer" onclick='remove_user_from_festival("<?php echo $user['id']?>")' class="material-icons">delete</i></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
     <div id="test4" class="col s12">Test 4</div>
 </div>
 <script>
@@ -158,6 +205,9 @@ create_header("");
 
         xhttp.send();
     }
+    function change_country_leader_status(user_id, country_id) {
+            let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + country_id + "&action=change_country_leader_status";
+     }
     function remove_user_from_festival(user_id) {
         if (confirm("Are you sure you want to remove this user?")) {
             location.href = "../control_panel/index.php?action=remove_user_from_festival&user_id=" + user_id;

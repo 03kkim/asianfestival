@@ -112,6 +112,23 @@ function get_performances() {
     }
 }
 
+function get_countries() {
+    global $db;
+
+    $query = "select * from country";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
+
 function str_lreplace($search, $replace, $subject)
 {
     $pos = strrpos($subject, $search);
@@ -639,4 +656,30 @@ function remove_user_from_festival($user_id) {
         echo $e;
         exit();
     }
+}
+
+function change_country_leader_status($user_id, $country_id) {
+    global $db;
+    # removes all privileges from the user
+    $query = "UPDATE country_user_xref SET is_country_leader = 0 WHERE (user_id = :user_id);
+              UPDATE performance_user_xref SET is_performance_leader = 0 WHERE (user_id = :user_id);";
+    if ($country_id == 7) {
+        # would be used to assign user as country leader for all countries
+        $query .= "";
+    }
+    elseif ($country_id > 0 and $country_id < 6) {
+        $query .= "\nUPDATE country_user_xref SET is_country_leader = 1 WHERE (country_id = :country_id) and (user_id = :user_id);
+              UPDATE performance_user_xref SET is_performance_leader = 1 WHERE (performance_id = (SELECT performance_id FROM performance WHERE country_id = :country_id)) and (user_id = :user_id)";
+    }
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":user_id", $user_id);
+        $statement->bindValue(":country_id", $country_id);
+        $statement->execute();
+        $statement->closeCursor();
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+
 }
