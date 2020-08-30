@@ -1,12 +1,12 @@
 <?php
-
-$db_host = "localhost";
+$db_params = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$db_host = $db_params["host"];
 
 $db_name = "asianfestival";
 
-$username = "root";
+$username = $db_params["user"];
 
-$password = "root";
+$password = $db_params["pass"];
 
 $dsn = "mysql:host=" . $db_host . ";dbname=" . $db_name;
 
