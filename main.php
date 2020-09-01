@@ -43,7 +43,7 @@ function create_header($style="") {
       <a href=\"/index.php\" class=\"brand-logo\" id=\"logo\">Asian Fest Practice Manager</a>
       <a href=\"#\" data-target=\"mobile-demo\" class=\"sidenav-trigger\"><i class=\"material-icons\">menu</i></a>
       <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
-        <li><a href=\"../calendar/index.php\">Calendar</a></li>";
+        <li><a href=\"/calendar/index.php\">Calendar</a></li>";
         if ($auth->isLoggedIn()) {
             $navbar .= "<li><a href=\"/practices/index.php\">Dashboard</a></li>";
             if($auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
