@@ -1,12 +1,12 @@
 <?php
+$db_params = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$db_host = $db_params["host"];
 
-$db_host = "localhost";
+$db_name = "heroku_92a229cd5108a6f";
 
-$db_name = "asianfestival";
+$username = $db_params["user"];
 
-$username = "root";
-
-$password = "root";
+$password = $db_params["pass"];
 
 $dsn = "mysql:host=" . $db_host . ";dbname=" . $db_name;
 
