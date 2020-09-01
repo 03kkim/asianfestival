@@ -2,7 +2,7 @@
 $db_params = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $db_host = $db_params["host"];
 
-$db_name = "";
+$db_name = "heroku_92a229cd5108a6f";
 
 $username = $db_params["user"];
 
