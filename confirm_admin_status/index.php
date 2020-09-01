@@ -1,7 +1,7 @@
 <?php
 include "../main.php";
 if(!$auth->check() || !$auth->hasRole(\Delight\Auth\Role::ADMIN)) {
-    header("Location: /asianfestival/index.php");
+    header("Location: /index.php");
 }
 $action = filter_input(INPUT_GET, "action");
 if(!isset($_GET["action"])){

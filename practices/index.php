@@ -4,7 +4,7 @@ include '../main.php';
 
 // Left unfinished so I wasn't really sure what to do here. I changed it so that loading the page wasn't dependent on whether or not somebody had just submitted a form or not.
 if(!$auth->check()) {
-    header("Location: /asianfestival/index.php");
+    header("Location: /index.php");
 }
 $action = filter_input(INPUT_GET, "action");
 if(!isset($_GET["action"])){
@@ -63,7 +63,7 @@ switch($action) {
 
     case "create_practice":
         if(!$auth->hasRole(\Delight\Auth\Role::ADMIN)) {
-            header("Location: /asianfestival/index.php");
+            header("Location: /index.php");
         }
         $performance_id = filter_input(INPUT_GET, "performance_id");
         $locations = get_locations();
