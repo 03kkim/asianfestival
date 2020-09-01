@@ -40,43 +40,43 @@ function create_header($style="") {
     </style>";
     $navbar = "<nav class=\"red darken-4\">
     <div class=\"nav-wrapper\">
-      <a href=\"/asianfestival/index.php\" class=\"brand-logo\" id=\"logo\">Asian Fest Practice Manager</a>
+      <a href=\"/index.php\" class=\"brand-logo\" id=\"logo\">Asian Fest Practice Manager</a>
       <a href=\"#\" data-target=\"mobile-demo\" class=\"sidenav-trigger\"><i class=\"material-icons\">menu</i></a>
       <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
-        <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>";
+        <li><a href=\"/calendar/index.php\">Calendar</a></li>";
         if ($auth->isLoggedIn()) {
-            $navbar .= "<li><a href=\"/asianfestival/practices/index.php\">Dashboard</a></li>";
+            $navbar .= "<li><a href=\"/practices/index.php\">Dashboard</a></li>";
             if($auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
-                $navbar .= "<li><a href=\"/asianfestival/control_panel\">Control Panel</a></li>";
+                $navbar .= "<li><a href=\"/control_panel\">Control Panel</a></li>";
             }
             if($auth->hasRole(\Delight\Auth\Role::ADMIN)) {
-                $navbar .= "<li><a href=\"/asianfestival/confirm_admin_status\">Confirm Admins</a></li>";
+                $navbar .= "<li><a href=\"/confirm_admin_status\">Confirm Admins</a></li>";
             }
-            $navbar.= "<li><a href=\"/asianfestival/logout/index.php\">Log Out</a></li></ul>
+            $navbar.= "<li><a href=\"/logout/index.php\">Log Out</a></li></ul>
     </div>
   </nav>";
         }
 
         else {
-            $navbar .= "<li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>
-        <li><a href=\"/asianfestival/signin/index.php\">Sign In</a></li>
+            $navbar .= "<li><a href=\"/signup/index.php\">Sign Up</a></li>
+        <li><a href=\"/signin/index.php\">Sign In</a></li>
       </ul>
     </div>
   </nav>";
         }
 
 //        $navbar .= "<ul class=\"sidenav\" id=\"mobile-demo\">
-//                    <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>";
+//                    <li><a href=\"/calendar/index.php\">Calendar</a></li>";
 //    if ($auth->isLoggedIn()) {
-//        $navbar .= "<li><a href=\"/asianfestival/practices/index.php\">Dashboard</a></li>";
+//        $navbar .= "<li><a href=\"/practices/index.php\">Dashboard</a></li>";
 //        if($auth->hasRole(\Delight\Auth\Role::ADMIN)) {
-//            $navbar .= "<li><a href=\"/asianfestival/confirm_admin_status\">Confirm Admins</a></li>";
+//            $navbar .= "<li><a href=\"/confirm_admin_status\">Confirm Admins</a></li>";
 //        }
-//        $navbar.= "<li><a href=\"/asianfestival/logout/index.php\">Log Out</a></li></ul>";
+//        $navbar.= "<li><a href=\"/logout/index.php\">Log Out</a></li></ul>";
 //    }
 //    else {
-//        $navbar .= "<li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>
-//        <li><a href=\"/asianfestival/signin/index.php\">Sign In</a></li></ul>";
+//        $navbar .= "<li><a href=\"/signup/index.php\">Sign Up</a></li>
+//        <li><a href=\"/signin/index.php\">Sign In</a></li></ul>";
 //    }
 
     $navbar .= "</header><body><main>";
