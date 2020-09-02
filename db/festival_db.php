@@ -156,7 +156,7 @@ function add_user($email, $password, $first_name, $last_name, $grade, $performan
 
     $query .= "; INSERT INTO country_user_xref (country_id, user_id) values ";
     foreach($performances as $performance) {
-        $country_id = get_country_id_by_performance_id($performance);
+        $country_id = get_country_by_performance_id($performance)["country_id"];
 
         $query .= "(" . $country_id . ", " . $user_id . "), ";
     }
