@@ -23,9 +23,10 @@ switch($action) {
         break;
 
     case "change_country_leader_status":
+//        Not reaching this phase
         $user_id = filter_input(INPUT_GET, "user_id");
         $country_id = filter_input(INPUT_GET, "country_id");
-        header("Location: /index.php");
+
         change_country_leader_status($user_id, $country_id);
 
 

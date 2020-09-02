@@ -207,11 +207,12 @@ create_header("");
     }
     function change_country_leader_status(user_id, country_id) {
         // Working up to here
-        let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + country_id + "&action=change_country_leader_status";
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", url);
-
-        xhttp.send();
+        // let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + country_id + "&action=change_country_leader_status";
+        // var xhttp = new XMLHttpRequest();
+        // xhttp.open("GET", url);
+        //
+        // xhttp.send();
+        location.href = "../control_panel/index.php?action=change_country_leader_status&user_id=" + user_id + "&country_id=" + country_id;
      }
     function remove_user_from_festival(user_id) {
         if (confirm("Are you sure you want to remove this user?")) {
