@@ -25,7 +25,7 @@ switch($action) {
     case "change_country_leader_status":
         $user_id = filter_input(INPUT_GET, "user_id");
         $country_id = filter_input(INPUT_GET, "country_id");
-        echo "HEllo!@";
+        echo "HEllo";
         change_country_leader_status($user_id, $country_id);
 
 

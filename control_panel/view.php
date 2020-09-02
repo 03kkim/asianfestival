@@ -206,7 +206,7 @@ create_header("");
         xhttp.send();
     }
     function change_country_leader_status(user_id, country_id) {
-        print("HEllo!");
+        // Working up to here
         let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + country_id + "&action=change_country_leader_status";
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", url);
