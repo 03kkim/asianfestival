@@ -662,10 +662,10 @@ function change_country_leader_status($user_id, $country_id) {
     global $db;
     # removes all privileges from the user
     $query = "UPDATE country_user_xref SET is_country_leader = 0 WHERE (user_id = :user_id); ";
-    if ($country_id == 7) {
-        # would be used to assign user as country leader for all countries
+    if ($country_id == 6) {
         $query .= "";
     }
+    # function to assign user as country leader for all countries?
     elseif ($country_id > 0 and $country_id < 6) {
         $query .= "UPDATE country_user_xref SET is_country_leader = 1 WHERE (country_id = :country_id) and (user_id = :user_id)";
 
@@ -673,7 +673,9 @@ function change_country_leader_status($user_id, $country_id) {
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(":user_id", $user_id);
-        $statement->bindValue(":country_id", $country_id);
+        if ($country_id > 0 and $country_id < 6) {
+            $statement->bindValue(":country_id", $country_id);
+        }
         $statement->execute();
         $statement->closeCursor();
     } catch(PDOException $e) {
