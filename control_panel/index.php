@@ -13,11 +13,6 @@ if(!isset($_GET["action"])){
     }
 }
 
-if(isset($_GET["country_id"])){
-    $user_id = filter_input(INPUT_GET, "user_id");
-    $country_id = filter_input(INPUT_GET, "country_id");
-    change_country_leader_status($user_id, $country_id);
-}
 
 switch($action) {
     case "change_paid_status":
@@ -26,6 +21,13 @@ switch($action) {
         change_paid_status($user_id, $is_paid);
 
         break;
+
+    case "change_country_leader_status":
+        $user_id = filter_input(INPUT_GET, "user_id");
+        $country_id = filter_input(INPUT_GET, "country_id");
+        echo "HEllo!@";
+        change_country_leader_status($user_id, $country_id);
+
 
     case "remove_user_from_festival":
         $user_id = filter_input(INPUT_GET, "user_id");

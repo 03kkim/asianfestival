@@ -136,7 +136,7 @@ create_header("");
                     <td><?php echo $user["email"] ?></td>
                     <td>
                         <div class="input-field col s12">
-                            <select name="country_id" id="country_id" onchange="this.form.submit()">
+                            <select name="country_id" id="country_id" onchange="change_country_leader_status(<?php echo $user["id"] ?>, <?php echo $country?>)">
                                 <?php
                                 $country_leader_statuses = array();
                                 foreach ($countries as $country) {
