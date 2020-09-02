@@ -29,6 +29,8 @@ switch($action) {
 
         change_country_leader_status($user_id, $country_id);
 
+        break;
+
 
     case "remove_user_from_festival":
         $user_id = filter_input(INPUT_GET, "user_id");

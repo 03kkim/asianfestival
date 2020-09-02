@@ -149,7 +149,16 @@ function add_user($email, $password, $first_name, $last_name, $grade, $performan
 
     $query = "insert into performance_user_xref (performance_id, user_id) values ";
     foreach($performances as $performance) {
-        $query .= " (" . $performance . ", " . $user_id . "), ";
+        $query .= "(" . $performance . ", " . $user_id . "), ";
+    }
+
+    $query = str_lreplace(",", "", $query);
+
+    $query .= "; INSERT INTO country_user_xref (country_id, user_id) values ";
+    foreach($performances as $performance) {
+        $country_id = get_country_id_by_performance_id($performance);
+
+        $query .= "(" . $country_id . ", " . $user_id . "), ";
     }
 
     $query = str_lreplace(",", "", $query);
@@ -276,6 +285,27 @@ function get_country_by_performance_id($performance_id) {
     global $db;
 
     $query = "select * from country, performance where performance.country_id = country.country_id and performance_id = :performance_id";
+
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(":performance_id", $performance_id);
+
+        $statement->execute();
+        $result = $statement->fetch();
+
+        $statement->closeCursor();
+
+        return $result;
+    } catch(PDOException $e) {
+        echo $e;
+        exit();
+    }
+}
+
+function get_country_id_by_performance_id($performance_id) {
+    global $db;
+
+    $query = "select country_id from country, performance where performance.country_id = country.country_id and performance_id = :performance_id";
 
     try {
         $statement = $db->prepare($query);
