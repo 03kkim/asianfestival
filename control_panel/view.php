@@ -206,7 +206,11 @@ create_header("");
         xhttp.send();
     }
     function change_country_leader_status(user_id, country_id) {
-            let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + country_id + "&action=change_country_leader_status";
+        let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + country_id + "&action=change_country_leader_status";
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url);
+
+        xhttp.send();
      }
     function remove_user_from_festival(user_id) {
         if (confirm("Are you sure you want to remove this user?")) {
