@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-<div class="practices carousel carousel-slider center z-depth-5" id="daily_schedule">
+<div class="practices carousel carousel-slider center z-depth-5 m12" id="daily_schedule">
     <div class="carousel-fixed-item center">
         <a class="btn waves-effect white black-text">View Practices (Does nothing rn)</a>
     </div>
