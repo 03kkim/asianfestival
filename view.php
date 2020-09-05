@@ -1,7 +1,7 @@
 <?php create_header(); ?>
     <div class="container">
         <div id="home_logo" class="row">
-            <div class="col s12 m12">
+            <div class="col s12 m12 s12">
                 <div class="card-panel red darken-4 z-depth-5">
             <span class="white-text center-align"><h1>Today's Schedule</h1>
             </span>
