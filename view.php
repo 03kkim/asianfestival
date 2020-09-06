@@ -1,21 +1,14 @@
 <?php create_header(); ?>
-    <div class="container">
-        <div id="home_logo" class="row">
-            <div class="col s12 m12 s12">
-                <div class="card-panel red darken-4 z-depth-5">
-            <span class="white-text center-align"><h1>Today's Schedule</h1>
-            </span>
-                </div>
-            </div>
-        </div>
-    </div>
-<div class="practices carousel carousel-slider center z-depth-5 m12 s12" id="daily_schedule">
+<div id="home_logo" style="background: #B56576;" class="row">
+    <span class="white-text center-align"><h1>Today's Schedule</h1></span>
+</div>
+<div style="width:80%" class="practices carousel carousel-slider center z-depth-5 m12 s12" id="daily_schedule">
     <div class="carousel-fixed-item center">
         <a class="btn waves-effect white black-text">View Practices (Does nothing rn)</a>
     </div>
     <?php foreach($timeslots as $timeslot) {
      $practices = get_daily_practices_by_time_id($timeslot["time_id"]);   ?>
-    <div class="carousel-item teal lighten-4 black-text" href="#<?php echo $timeslot["timeslot_id"]?>">
+    <div style="background: #BFD7EA" class="carousel-item black-text" href="#<?php echo $timeslot["timeslot_id"]?>">
         <h2><?php echo $timeslot["time"]?></h2>
         <table class="centered">
             <thead>

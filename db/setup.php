@@ -1,12 +1,13 @@
 <?php
 $db_params = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$db_host = $db_params["host"];
+
+$db_host = "us-cdbr-east-02.cleardb.com";
 
 $db_name = "heroku_92a229cd5108a6f";
 
-$username = $db_params["user"];
+$username = "b4ef310d25c5cf";
 
-$password = $db_params["pass"];
+$password = "f4fe106e";
 
 $dsn = "mysql:host=" . $db_host . ";dbname=" . $db_name;
 
