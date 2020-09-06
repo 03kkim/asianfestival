@@ -2,7 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 include "db/festival_db.php";
-$r = getenv("CLEARDB_DATABASE_URL");
+$r = getenv("WEB_ROOT");
 if($r != "") {
     $web_root = $r;
 }
