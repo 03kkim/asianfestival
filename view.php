@@ -1,5 +1,5 @@
 <?php create_header(); ?>
-<div id="home_logo" style="background: #B56576;" class="row">
+<div id="home_logo" style="background: #C09BD8;" class="row">
     <span class="white-text center-align"><h1>Today's Schedule</h1></span>
 </div>
 <div style="width:80%" class="practices carousel carousel-slider center z-depth-5 m12 s12" id="daily_schedule">

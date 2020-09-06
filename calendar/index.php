@@ -100,7 +100,7 @@ function draw_calendar($month,$year){
 
 if (!isset($_GET["month"])) {
 //    $_GET["month"] = date("n");
-    header("Location: /calendar/index.php?month=" . date("n"));
+    header("Location: " . $web_root . "/calendar/index.php?month=" . date("n"));
 }
 
 $month = $_GET["month"];

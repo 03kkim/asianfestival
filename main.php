@@ -3,8 +3,11 @@
 require __DIR__ . '/vendor/autoload.php';
 include "db/festival_db.php";
 
+$web_root = "/" . basename(__DIR__);
+
 function create_header($style="") {
     global $auth;
+    global $web_root;
     $header = "<!-- Compiled and minified CSS -->
     <header>
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
@@ -41,43 +44,43 @@ function create_header($style="") {
     </style>";
     $navbar = "<nav style='background:#355070;'>
     <div class=\"nav-wrapper\">
-      <a href=\"/asianfestival/index.php\" style=\"white-space:nowrap\" class=\"brand-logo\" id=\"logo\">Asian Festival</a>
+      <a href=\"" . $web_root . "/index.php\" style=\"white-space:nowrap\" class=\"brand-logo\" id=\"logo\">Asian Festival</a>
       <a href=\"#\" data-target=\"mobile-demo\" class=\"sidenav-trigger\"><i class=\"material-icons\">menu</i></a>
       <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
-        <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>";
+        <li><a href=\"" . $web_root . "/calendar/index.php\">Calendar</a></li>";
         if ($auth->isLoggedIn()) {
-            $navbar .= "<li><a href=\"/asianfestival/practices/index.php\">Dashboard</a></li>";
+            $navbar .= "<li><a href=\"" . $web_root . "/practices/index.php\">Dashboard</a></li>";
             if($auth->hasRole(\Delight\Auth\Role::SUPER_ADMIN)) {
-                $navbar .= "<li><a href=\"/asianfestival/control_panel\">Control Panel</a></li>";
+                $navbar .= "<li><a href=\"" . $web_root . "/control_panel\">Control Panel</a></li>";
             }
             if($auth->hasRole(\Delight\Auth\Role::ADMIN)) {
-                $navbar .= "<li><a href=\"/asianfestival/confirm_admin_status\">Confirm Admins</a></li>";
+                $navbar .= "<li><a href=\"" . $web_root . "/confirm_admin_status\">Confirm Admins</a></li>";
             }
-            $navbar.= "<li><a href=\"/asianfestival/logout/index.php\">Log Out</a></li></ul>
+            $navbar.= "<li><a href=\"" . $web_root . "/logout/index.php\">Log Out</a></li></ul>
     </div>
   </nav>";
         }
 
         else {
-            $navbar .= "<li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>
-        <li><a href=\"/asianfestival/signin/index.php\">Sign In</a></li>
+            $navbar .= "<li><a href=\"" . $web_root . "/signup/index.php\">Sign Up</a></li>
+        <li><a href=\"" . $web_root . "/signin/index.php\">Sign In</a></li>
       </ul>
     </div>
   </nav>";
         }
 
         $navbar .= "<ul class=\"sidenav\" id=\"mobile-demo\">
-                    <li><a href=\"/asianfestival/calendar/index.php\">Calendar</a></li>";
+                    <li><a href=\"" . $web_root . "/calendar/index.php\">Calendar</a></li>";
     if ($auth->isLoggedIn()) {
-        $navbar .= "<li><a href=\"/asianfestival/practices/index.php\">Dashboard</a></li>";
+        $navbar .= "<li><a href=\"" . $web_root . "/practices/index.php\">Dashboard</a></li>";
         if($auth->hasRole(\Delight\Auth\Role::ADMIN)) {
-            $navbar .= "<li><a href=\"/asianfestival/confirm_admin_status\">Confirm Admins</a></li>";
+            $navbar .= "<li><a href=\"" . $web_root . "/confirm_admin_status\">Confirm Admins</a></li>";
         }
-        $navbar.= "<li><a href=\"/asianfestival/logout/index.php\">Log Out</a></li></ul>";
+        $navbar.= "<li><a href=\"" . $web_root . "/logout/index.php\">Log Out</a></li></ul>";
     }
     else {
-        $navbar .= "<li><a href=\"/asianfestival/signup/index.php\">Sign Up</a></li>
-        <li><a href=\"/asianfestival/signin/index.php\">Sign In</a></li></ul>";
+        $navbar .= "<li><a href=\"" . $web_root . "/signup/index.php\">Sign Up</a></li>
+        <li><a href=\"" . $web_root . "/signin/index.php\">Sign In</a></li></ul>";
     }
 
     $navbar .= "</header></meta><body><main>";
@@ -88,7 +91,7 @@ function create_header($style="") {
 function create_footer() {
     $footer = "
           </main></body>  
-          <footer class=\"page-footer red darken-4\">
+          <footer style='background:#355070' class=\"page-footer\">
             <div class=\"container\">
             <div class=\"row\">
               <div class=\"col l6 s12\">
