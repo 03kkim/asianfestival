@@ -2,8 +2,13 @@
 
 require __DIR__ . '/vendor/autoload.php';
 include "db/festival_db.php";
-
-$web_root = "/" . basename(__DIR__);
+$r = getenv("CLEARDB_DATABASE_URL");
+if($r != "") {
+    $web_root = $r;
+}
+else {
+    $web_root = "/" . basename(__DIR__);
+}
 
 function create_header($style="") {
     global $auth;
