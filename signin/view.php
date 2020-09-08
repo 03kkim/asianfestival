@@ -32,7 +32,7 @@
     padding: 5% 0;
   }
   </style>"); ?>
-<h1>Sign In</h1>
+<h2>Sign In</h2>
 <form style="width:70%;margin: 0 auto" method="post" action="./index.php">
     <input type="hidden" name="action" id="sign_in">
     <div class="row">
