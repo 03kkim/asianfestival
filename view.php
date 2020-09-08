@@ -11,8 +11,8 @@
         <li>
             <img src="images/asianfest2.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h1>Check the navbar at the top of the page</h1>
-                <h5 class="light grey-text text-lighten-3">for further options</h5>
+                <h1>Check out the navbar!</h1>
+                <h5 class="light grey-text text-lighten-3">Sign up if you haven't already done for a more customized experience.</h5>
             </div>
         </li>
     </ul>
