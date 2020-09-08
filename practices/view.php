@@ -1,7 +1,7 @@
 <?php
 create_header();
 ?>
-<h2>Practice Utility</h2>
+<h2 style="text-align:center" >Practice Utility</h2>
 <ul class="collapsible expandable">
     <?php foreach($user_performances as $performance) {
         $status = check_performance_leader($user_id, $performance["performance_id"]) ?>

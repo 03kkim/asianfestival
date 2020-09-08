@@ -29,7 +29,7 @@
     padding: 5% 0;
   }
   </style>"); ?>
-<h2>Sign Up</h2>
+<h2 style="text-align:center">Sign Up</h2>
 
 <form style="width:70%;margin: 0 auto" method="post" action="./index.php">
     <input type="hidden" name="action" id="add_user">
