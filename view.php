@@ -1,5 +1,8 @@
 <?php create_header(); ?>
 <div class="slider">
+    <div class="carousel-fixed-item center">
+        <a class="btn waves-effect white grey-text darken-text-2">button</a>
+    </div>
     <ul class="slides">
         <li>
             <img src="images/asianfest1.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
