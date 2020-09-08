@@ -4,7 +4,7 @@
         <li>
             <img src="images/asianfest1.jpg">
             <div class="caption center-align">
-                <h2>Today's Schedule</h2>
+                <h1>Today's Schedule</h1>
                 <h5 class="light grey-text text-lighten-3"></h5>
             </div>
         </li>
