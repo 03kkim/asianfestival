@@ -2,16 +2,16 @@
 <div class="slider">
     <ul class="slides">
         <li>
-            <img src="images/asianfest1.jpg" style="filter:blur(8px);-webkit-filter:blur(8px)">
+            <img src="images/asianfest1.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
                 <h1>Today's Schedule</h1>
                 <h5 class="light grey-text text-lighten-3"></h5>
             </div>
         </li>
         <li>
-            <img src="images/asianfest2.jpg" style="filter:blur(8px);-webkit-filter:blur(8px)">
+            <img src="images/asianfest2.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h2>Today's Schedule</h2>
+                <h1>Today's Schedule</h1>
                 <h5 class="light grey-text text-lighten-3"></h5>
             </div>
         </li>
