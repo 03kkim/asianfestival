@@ -4,22 +4,22 @@
         <li>
             <img src="images/asianfest1.jpg">
             <div class="caption center-align">
-                <h3>Asian Fest Practices</h3>
-                <h5 class="light grey-text text-lighten-3">Wow!</h5>
+                <h2>Today's Schedule</h2>
+                <h5 class="light grey-text text-lighten-3"></h5>
             </div>
         </li>
         <li>
             <img src="images/asianfest2.jpg">
-            <div class="caption left-align">
-                <h3>AF Practices</h3>
-                <h5 class="light grey-text text-lighten-3">Woah</h5>
+            <div class="caption center-align">
+                <h2>Today's Schedule</h2>
+                <h5 class="light grey-text text-lighten-3"></h5>
             </div>
         </li>
     </ul>
 </div>
-<div id="home_logo" style="background: #c09bd8;" class="row">
-    <span class="white-text center-align"><h1>Today's Schedule</h1></span>
-</div>
+<!--<div id="home_logo" style="background: #c09bd8;" class="row">-->
+<!--    <span class="white-text center-align"><h1>Today's Schedule</h1></span>-->
+<!--</div>-->
 <div style="width:80%" class="practices carousel carousel-slider center z-depth-5 m12 s12" id="daily_schedule">
     <div class="carousel-fixed-item center">
         <a class="btn waves-effect white black-text">View Practices (Does nothing rn)</a>
