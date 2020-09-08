@@ -69,6 +69,11 @@
         fullWidth: true,
         indicators: true
     });
+    $(document).ready(function(){
+        $('.slider').slider({
+            indicators: false
+        });
+    });
 </script>
 
 <?php create_footer(); ?>
