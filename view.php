@@ -4,15 +4,15 @@
         <li>
             <img src="images/asianfest1.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h1>Today's Schedule</h1>
-                <h5 class="light grey-text text-lighten-3"></h5>
+                <h1>Welcome to the practice manager!</h1>
+                <h5 class="light grey-text text-lighten-3">Today's practice schedule is below.</h5>
             </div>
         </li>
         <li>
             <img src="images/asianfest2.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h1>Today's Schedule</h1>
-                <h5 class="light grey-text text-lighten-3"></h5>
+                <h1>Check the navbar at the top of the page</h1>
+                <h5 class="light grey-text text-lighten-3">for further options</h5>
             </div>
         </li>
     </ul>
@@ -71,8 +71,7 @@
     });
     $(document).ready(function(){
         $('.slider').slider({
-            indicators: false,
-            duration: 50
+            indicators: false
         });
     });
 </script>
