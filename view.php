@@ -72,7 +72,7 @@
     $(document).ready(function(){
         $('.slider').slider({
             indicators: false,
-            duration: 0
+            duration: 50
         });
     });
 </script>
