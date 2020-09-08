@@ -11,10 +11,6 @@
   main {
     flex: 1 0 auto;
   } 
-  h1 {
-    margin: 5% auto;
-    padding: 1.5%;
-  }
   h5 {
     margin: 2% auto;
   }

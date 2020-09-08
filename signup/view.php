@@ -11,10 +11,7 @@
   main {
     flex: 1 0 auto;
   } 
-  h1 {
-    margin: 5% auto;
-    padding: 1.5%;
-  }
+  
   h5 {
     margin: 2% auto;
   }
@@ -32,7 +29,7 @@
     padding: 5% 0;
   }
   </style>"); ?>
-<h1>Sign Up</h1>
+<h2>Sign Up</h2>
 
 <form style="width:70%;margin: 0 auto" method="post" action="./index.php">
     <input type="hidden" name="action" id="add_user">
