@@ -4,28 +4,28 @@
         <li>
             <img src="images/asianfest1.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h1>Welcome to the practice manager!</h1>
+                <h2>Welcome to the practice manager!</h2>
                 <h5 class="light grey-text text-lighten-3">Today's practice schedule is below.</h5>
             </div>
         </li>
         <li>
             <img src="images/asianfest2.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h1>Check out the navbar!</h1>
+                <h2>Check out the navbar!</h2>
                 <h5 class="light grey-text text-lighten-3">Sign up if you haven't already done for a more customized experience.</h5>
             </div>
         </li>
         <li>
             <img src="images/asianfest3.PNG" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h1>Welcome to the practice manager!</h1>
+                <h2>Welcome to the practice manager!</h2>
                 <h5 class="light grey-text text-lighten-3">Today's practice schedule is below.</h5>
             </div>
         </li>
         <li>
-            <img src="images/asianfest4.HEIC.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
+            <img src="images/asianfest4.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h1>Check out the navbar!</h1>
+                <h2>Check out the navbar!</h2>
                 <h5 class="light grey-text text-lighten-3">Sign up if you haven't already done for a more customized experience.</h5>
             </div>
         </li>
