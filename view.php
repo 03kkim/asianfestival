@@ -12,7 +12,7 @@
             <img src="images/asianfest2.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
                 <h2>Check out the navbar!</h2>
-                <h5 class="light grey-text text-lighten-3">Sign up if you haven't already done for a more customized experience.</h5>
+                <h5 class="light grey-text text-lighten-3">Sign up if you haven't already for a more customized experience.</h5>
             </div>
         </li>
         <li>
