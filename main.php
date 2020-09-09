@@ -114,8 +114,8 @@ function create_footer() {
           </div>
           <div class=\"footer-copyright\">
             <div class=\"container\">
-            © 2014 Copyright Text
-            <a class=\"grey-text text-lighten-4 right\" href=\"#!\">More Links</a>
+            © 2020 RHS Asian Fest
+            <a class=\"grey-text text-lighten-4 right\" href=\"#!\"></a>
             </div>
           </div>
         </footer>";
