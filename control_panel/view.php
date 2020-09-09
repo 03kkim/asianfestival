@@ -136,8 +136,9 @@ create_header("");
                     <td><?php echo $user["email"] ?></td>
                     <td>
                         <div class="input-field col s12">
-                            <select name="country_id" id="country_id" onchange="change_country_leader_status(<?php echo $user["id"] ?>, <?php echo $country?>)">
+                            <select name="country_id" id="country_id" onchange="change_country_leader_status(<?php echo $user["id"] ?>)">
                                 <?php
+//                                Strange behavior in the below code (Check console)
                                 $country_leader_statuses = array();
                                 foreach ($countries as $country) {
                                     $style = "";
@@ -205,14 +206,18 @@ create_header("");
 
         xhttp.send();
     }
-    function change_country_leader_status(user_id, country_id) {
+    function change_country_leader_status(user_id) {
         // Working up to here
-        // let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + country_id + "&action=change_country_leader_status";
-        // var xhttp = new XMLHttpRequest();
-        // xhttp.open("GET", url);
-        //
-        // xhttp.send();
-        location.href = "../control_panel/index.php?action=change_country_leader_status&user_id=" + user_id + "&country_id=" + country_id;
+
+        console.log(document.getElementById("country_id").value);
+        if (document.getElementById("country_id").value != "6"){
+            let url = "../control_panel/index.php?user_id=" + user_id + "&country_id=" + document.getElementById("country_id").value + "&action=change_country_leader_status";
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", url);
+
+            xhttp.send();
+        }
+
      }
     function remove_user_from_festival(user_id) {
         if (confirm("Are you sure you want to remove this user?")) {
