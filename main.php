@@ -49,7 +49,7 @@ function create_header($style="") {
     </style>";
     $navbar = "<nav style='background:#355070;'>
     <div class=\"nav-wrapper\">
-      <a href=\"" . $web_root . "/index.php\" style=\"white-space:nowrap\" class=\"brand-logo\" id=\"logo\">Asian Festival</a>
+      <a href=\"" . $web_root . "/index.php\" style=\"white-space:nowrap\" class=\"brand-logo\" id=\"logo\">Asian Fest</a>
       <a href=\"#\" data-target=\"mobile-demo\" class=\"sidenav-trigger\"><i class=\"material-icons\">menu</i></a>
       <ul id=\"nav-mobile\" class=\"right hide-on-med-and-down\">
         <li><a href=\"" . $web_root . "/calendar/index.php\">Calendar</a></li>";
@@ -107,7 +107,7 @@ function create_footer() {
                 <h5 class=\"white-text\">Contact</h5>
                 <ul>
                   <li><a class=\"grey-text text-lighten-3\" href=\"https://www.instagram.com/rhs.asianfest/\">Instagram | @rhs.asianfest</a></li>
-                  <li><a class=\"grey-text text-lighten-3\" href=\"#!\">Questions? | 03kkim@ridgewood.k.12.nj.us</a></li>
+                  <li><a class=\"grey-text text-lighten-3\" href=\"#!\">Questions? | 03kkim@ridgewood.k12.nj.us</a></li>
                 </ul>
               </div>
             </div>
