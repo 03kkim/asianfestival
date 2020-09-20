@@ -4,29 +4,29 @@
         <li>
             <img src="images/asianfest1.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h2>Welcome to the practice manager!</h2>
+                <h2>Welcome to the Asian Fest practice manager!</h2>
                 <h5 class="light grey-text text-lighten-3">Today's practice schedule is below.</h5>
             </div>
         </li>
         <li>
             <img src="images/asianfest2.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h2>Check out the navbar!</h2>
-                <h5 class="light grey-text text-lighten-3">Sign up if you haven't already for a more customized experience.</h5>
+                <h2>Sign up if you haven't already</h2>
+                <h5 class="light grey-text text-lighten-3">to get personalized practice schedules</h5>
             </div>
         </li>
         <li>
             <img src="images/asianfest3.PNG" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
                 <h2>Welcome to the practice manager!</h2>
-                <h5 class="light grey-text text-lighten-3">Today's practice schedule is below.</h5>
+                <h5 class="light grey-text text-lighten-3">Look below for today's schedule</h5>
             </div>
         </li>
         <li>
             <img src="images/asianfest4.jpg" style="filter:blur(8px);-webkit-filter:blur(5px)">
             <div class="caption center-align">
-                <h2>Check out the navbar!</h2>
-                <h5 class="light grey-text text-lighten-3">Sign up if you haven't already done for a more customized experience.</h5>
+                <h2>Check out the calendar</h2>
+                <h5 class="light grey-text text-lighten-3">Personalized calendars coming soon</h5>
             </div>
         </li>
     </ul>
