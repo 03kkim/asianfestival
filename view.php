@@ -36,7 +36,7 @@
 <!--</div>-->
 <div style="width:80%" class="practices carousel carousel-slider center z-depth-5 m12 s12" id="daily_schedule">
     <div class="carousel-fixed-item center">
-        <a class="btn waves-effect white black-text">View Practices (Does nothing rn)</a>
+<!--        <a class="btn waves-effect white black-text">View Practices (Does nothing rn)</a>-->
     </div>
     <?php foreach($timeslots as $timeslot) {
      $practices = get_daily_practices_by_time_id($timeslot["time_id"]);   ?>
